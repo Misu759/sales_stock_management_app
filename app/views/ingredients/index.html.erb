@@ -1,0 +1,27 @@
+<h1 class="mt-4 mb-4">食材一覧</h1>
+
+<div class="row">
+  <div class="col-9">  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">食材名</th>
+          <th scope="col">単価</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+            <th scope="row"><%= ingredient.name %></th>
+            <td><%= ingredient.purchase_cost %></td>
+            <td>
+              <%= link_to '編集', edit_ingredient_path(ingredient), class: "btn btn-sm btn-success" %>
+              <%= link_to '削除', ingredient_path(ingredient), class: "btn btn-sm btn-success", method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

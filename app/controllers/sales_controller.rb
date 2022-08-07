@@ -48,4 +48,3 @@ class SalesController < ApplicationController
     params.require(:sale).permit(:quantity, :menu_id, :date)
   end
 end
-
