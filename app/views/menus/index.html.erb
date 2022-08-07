@@ -1,0 +1,22 @@
+<h1 class="text-center mt-4">Menu index</h1>
+
+<div class="container">
+  <% @menus.each do |menu| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            <%= link_to menu.name, '#', class: "text-success" %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= menu.regular_cost %></h5>
+            <p class="card-text"><%= truncate(menu.description, length: 100) %></p>
+            <%= link_to "View", '#', class: "btn btn-outline-success" %>
+            <%= link_to "Edit", '#', class: "btn btn-outline-info" %>
+            <%= link_to "Delete", '#', class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
