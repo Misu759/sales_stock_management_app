@@ -19,7 +19,7 @@
             <td><%= sale.date %></td>
             <td><%= sale.quantity %></td>
             <td><%= sale.menu.regular_cost * sale.quantity %></td>
-            <td><%= link_to '詳細', '#', class: "btn btn-sm btn-success" %>
+            <td><%= link_to '詳細', sale_path(sale), class: "btn btn-sm btn-success" %>
             </td>
           </tr>
         <% end %>
