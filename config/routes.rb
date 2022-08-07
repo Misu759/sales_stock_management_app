@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :menus, only: %i[index show]
+  resources :menus, only: %i[index show new create]
 end
