@@ -33,8 +33,8 @@
             メニュー
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">メニュー一覧</a>
-            <a class="dropdown-item" href="#">新規メニュー追加</a>
+            <%= link_to 'メニュー一覧', menus_path, class: 'dropdown-item'%>
+            <%= link_to '新規メニュー追加', new_menu_path, class: 'dropdown-item'%>
           </div>
         </li>
         <li class="nav-item">

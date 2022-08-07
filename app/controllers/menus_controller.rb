@@ -21,6 +21,27 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
   end
+
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    if @menu.update(menu_params)
+      flash[:notice] = "Menu was updated successfully."
+      redirect_to @menu
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+    flash[:notice] = "Menu was deleted."
+    redirect_to menus_path
+  end
   
 end
 
