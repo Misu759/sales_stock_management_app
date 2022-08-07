@@ -1,0 +1,29 @@
+<h1 class="mt-4 mb-4">売上一覧</h1>
+
+<div class="row">
+  <div class="col-9">  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">メニュー名</th>
+          <th scope="col">日付</th>
+          <th scope="col">個数</th>
+          <th scope="col">売上</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sales.each do |sale| %>
+          <tr>
+            <th scope="row"><%= sale.menu.name %></th>
+            <td><%= sale.date %></td>
+            <td><%= sale.quantity %></td>
+            <td><%= sale.menu.regular_cost * sale.quantity %></td>
+            <td><%= link_to '詳細', '#', class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
