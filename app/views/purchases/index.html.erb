@@ -1,0 +1,28 @@
+<h1 class="mt-4 mb-4">発注履歴</h1>
+
+<div class="row">
+  <div class="col-9">  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">食品名</th>
+          <th scope="col">日付</th>
+          <th scope="col">発注量</th>
+          <th scope="col">金額</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @purchases.each do |purchase| %>
+          <tr>
+            <th scope="row"><%= purchase.ingredient.name %></th>
+            <td><%= purchase.purchase_date %></td>
+            <td><%= purchase.amount %></td>
+            <td><%= purchase.ingredient.purchase_cost * purchase.amount %></td>
+            <td><%= link_to '詳細', purchase_path(purchase), class: "btn btn-sm btn-success" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
