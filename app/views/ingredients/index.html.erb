@@ -17,7 +17,7 @@
             <td><%= ingredient.purchase_cost %></td>
             <td>
               <%= link_to '編集', edit_ingredient_path(ingredient), class: "btn btn-sm btn-success" %>
-              <%= link_to '削除', ingredient_path(ingredient), class: "btn btn-sm btn-success", method: :delete %>
+              <%= link_to '削除', ingredient_path(ingredient), class: "btn btn-sm btn-success", method: :delete, data: {confirm: "Are you sure?"} %>
             </td>
           </tr>
         <% end %>

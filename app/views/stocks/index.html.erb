@@ -1,0 +1,26 @@
+<h1 class="mt-4 mb-4">在庫一覧</h1>
+
+<div class="row">
+  <div class="col-9">  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">食材名</th>
+          <th scope="col">繰り越し在庫量</th>
+          <th scope="col">営業日在庫量</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stocks.each do |stock| %>
+          <tr>
+            <th scope="row"><%= stock.ingredient.name %></th>
+            <td><%= stock.amount %></td>
+            <td><%= stock.amount %></td>
+            <td><%= link_to '詳細', stock_path(stock), class: "btn btn-sm btn-success" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
