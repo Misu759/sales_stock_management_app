@@ -15,8 +15,8 @@
           <% end %>
 
           <p><%= "定価 : #{@menu.regular_cost}円" %></p>
-          <p><%= "原価 : #{@cost_price}円" %></p>
-          <p><%= "原価率 : #{(@cost_price.to_f / @menu.regular_cost.to_f).truncate(2) * 100 }%" %></p>
+          <p><%= "原価 : #{@menu.cost_price}円" %></p>
+          <p><%= "原価率 : #{(@menu.cost_price.to_f / @menu.regular_cost.to_f).truncate(2) * 100 }%" %></p>
           <%= link_to "Edit", edit_menu_path(@menu), class: "btn btn-outline-info" %>
           <%= link_to "Delete", menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>

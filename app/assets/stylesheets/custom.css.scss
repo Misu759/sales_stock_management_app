@@ -18,7 +18,16 @@
 
 .jumbotron {
   color: #fff;
+  background-color: #7aaf9a;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#top-jumb {
+  color: #fff;
   background-image: asset-url('jumbo-back.jpg');
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

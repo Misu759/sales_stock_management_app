@@ -1,5 +1,12 @@
 <h1 class="mt-4 mb-4">売上一覧</h1>
-
+<div class="jumbotron mt-4">
+  <h1 class="display-4"><%= Date.today %> </h1>
+  <h2 class="lead"><%= "売上高  : #{@total_sales}"%></h2>
+  <h2 class="lead"><%= "粗利益  : #{@gross_profit}"%></h2>
+  <h2 class="lead"><%= "営業利益 : #{@total_sales - @gross_profit}"%></h2>
+  <hr class="my-4">
+</div>
+<h2 class="mt-4 mb-4">商品別売上</h2>
 <div class="row">
   <div class="col-9">  
     <table class="table table-bordered table-hover">

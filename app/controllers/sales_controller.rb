@@ -1,7 +1,9 @@
 class SalesController < ApplicationController
 
   def index
-    @sales = Sale.all
+    @sales = Sale.where(date: Date.today)
+    @total_sales = total_sales(@sales)
+    @gross_profit = gross_profit(@sales)
   end
 
   def show
@@ -46,5 +48,17 @@ class SalesController < ApplicationController
   private
   def sale_params
     params.require(:sale).permit(:quantity, :menu_id, :date)
+  end
+
+  def total_sales(sales)
+    total = 0
+    sales.each {|sale| total += sale.menu.regular_cost * sale.quantity}
+    total
+  end
+
+  def gross_profit(sales)
+    total = 0
+    sales.each {|sale| total += sale.menu.cost_price * sale.quantity}
+    total
   end
 end
