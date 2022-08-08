@@ -14,7 +14,7 @@ class MenusController < ApplicationController
       flash[:notice] = "メニュー情報を追加しました"
       redirect_to @menu
     else
-      flash.now[danger] = "もう一度やり直してください"
+      flash.now[:danger] = "もう一度やり直してください"
       render 'new'
     end
   end

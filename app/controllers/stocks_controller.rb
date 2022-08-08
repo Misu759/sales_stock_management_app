@@ -27,6 +27,13 @@ class StocksController < ApplicationController
     end
   end
 
+  def destroy
+    @stock = Stock.find(params[:id])
+    @stock.destroy
+    flash[:notice] = '在庫情報を削除しました'
+    redirect_to stocks_path
+  end
+
   def search
     @results = @q.result
   end
