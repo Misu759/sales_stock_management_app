@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :menus
   resources :sales
   resources :ingredients, except: [:show]
-  resources :stocks, only: %i[index show edit update delete]
+  resources :stocks, only: %i[index show edit update delete] do
+    collection do
+      get 'search'
+    end
+  end
   resources :purchases
 end

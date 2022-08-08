@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
-
+  before_action :set_q, only: [:index, :search]
+  
   def index
     @stocks = Stock.all
   end
@@ -26,7 +27,15 @@ class StocksController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
+
+  def set_q
+    @q = Stock.ransack(params[:q])
+  end
 
   def stock_params
     params.require(:stock).permit(:ingredient_id, :amount)

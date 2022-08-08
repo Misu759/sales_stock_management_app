@@ -1,0 +1,8 @@
+<h3>検索</h3>
+<%= search_form_for(@q, url: search_stocks_path) do |f| %>
+  <div class="form-group row">
+    <%= f.label :ingredient_name_cont, '食材名', class: 'col-1 col-form-label'%>
+    <%= f.search_field :ingredient_name_cont, class:'form-control col-4', placeholder: '検索したい食材名を入力' %>
+    <%= f.submit '検索', class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>
