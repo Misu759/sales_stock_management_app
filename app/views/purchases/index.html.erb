@@ -1,6 +1,13 @@
-<h1 class="mt-4 mb-4">発注履歴</h1>
+<h2 class="mt-4 mb-4">発注履歴</h2>
 
-<div class="row">
+<div class="col-9">
+  <%= line_chart @purchase_graph_data %>
+</div>
+
+
+<h3 class="mt-4 mb-4">食品別情報</h3>
+
+<div class="row text-center">
   <div class="col-9">  
     <table class="table table-bordered table-hover">
       <thead>
