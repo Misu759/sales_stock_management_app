@@ -21,6 +21,8 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @menu_ingredients = MenuIngredient.where(menu: @menu)
+    @cost_price = cost_price(@menu)
   end
 
   def edit
