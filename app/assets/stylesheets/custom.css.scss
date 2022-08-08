@@ -1,1 +1,36 @@
 @import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+  background-color: #2f4f45 !important;
+}
+
+.bg-info {
+  background-color: #7aaf9a !important;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.jumbotron {
+  color: #fff;
+  background-image: asset-url('jumbo-back.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: rgb(171, 189, 170);
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
