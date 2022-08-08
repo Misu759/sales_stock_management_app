@@ -1,4 +1,5 @@
 class SalesController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def index
     @sales = Sale.where(date: Date.today)
@@ -45,7 +46,18 @@ class SalesController < ApplicationController
     redirect_to sales_path
   end
 
+  def search
+    @results = @q.result
+    @total_sales = total_sales(@results)
+    @gross_profit = gross_profit(@results)
+  end
+
   private
+
+  def set_q
+    @q = Sale.ransack(params[:q])
+  end
+
   def sale_params
     params.require(:sale).permit(:quantity, :menu_id, :date)
   end
