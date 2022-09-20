@@ -21,10 +21,15 @@
             <th scope="row"><%= stock.ingredient.name %></th>
             <td><%= stock.amount %></td>
             <td><%= stock.amount %></td>
-            <td><%= link_to '詳細', stock_path(stock), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to '詳細', stock_path(stock), class: "btn btn-sm btn-outline-success" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+</div>
+
+
+<div class="text-center col-9 mt-4">
+  <%= link_to '廃棄情報一覧', wastes_path, class: "btn btn-lg btn-outline-secondary" %>
 </div>
