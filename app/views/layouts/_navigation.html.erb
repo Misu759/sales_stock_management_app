@@ -37,8 +37,14 @@
             <%= link_to '新規メニュー追加', new_menu_path, class: 'dropdown-item'%>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ヘルプ</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            食材
+          </a>
+          <div class="dropdown-menu">
+            <%= link_to '食材情報一覧', ingredients_path, class: 'dropdown-item'%>
+            <%= link_to '食材情報追加', new_ingredient_path, class: 'dropdown-item'%>
+          </div>
         </li>
       </ul>
     </div>
