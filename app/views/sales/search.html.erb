@@ -6,7 +6,7 @@
   <p class="mt-4"><%= t '.not_found' %></p>
 <% else %>
   <div class="jumbotron mt-4">
-    <h1 class="display-4"><%= @results.first.date %> </h1>
+    <h1 class="display-5"><%= l @results.first.date, format: :long %> </h1>
     <h2 class="lead"><%= "#{t '.total_sales'}  : #{@total_sales}"%></h2>
     <h2 class="lead"><%= "#{t '.gross_profit'}  : #{@gross_profit}"%></h2>
     <h2 class="lead"><%= "#{t '.operating_income'} : #{@total_sales - @gross_profit}"%></h2>

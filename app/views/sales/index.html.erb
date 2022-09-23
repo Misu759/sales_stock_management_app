@@ -3,7 +3,7 @@
 <%= render 'search_form' %>
 
 <div class="jumbotron mt-4">
-  <h1 class="display-4"><%= Date.today %> </h1>
+  <h1 class="display-5"><%= l Date.today, format: :long %> </h1>
   <h2 class="lead"><%= "#{t '.total_sales'}  : #{@total_sales}"%></h2>
   <h2 class="lead"><%= "#{t '.gross_profit'}  : #{@gross_profit}"%></h2>
   <h2 class="lead"><%= "#{t '.operating_income'} : #{@total_sales - @gross_profit}"%></h2>
@@ -26,7 +26,7 @@
         <% @sales.each do |sale| %>
           <tr>
             <th scope="row"><%= sale.menu.name %></th>
-            <td><%= sale.date %></td>
+            <td><%= l sale.date, format: :short %></td>
             <td><%= sale.quantity %></td>
             <td><%= sale.menu.regular_cost * sale.quantity %></td>
             <td><%= link_to t('defaults.show'), sale_path(sale), class: "btn btn-sm btn-outline-success" %></td>
