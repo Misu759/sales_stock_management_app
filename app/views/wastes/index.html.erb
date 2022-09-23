@@ -1,7 +1,7 @@
-<h1 class="mt-4 mb-4">廃棄食材情報一覧</h1>
+<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
 <div class="text-center col-9 mb-4">
-  <%= link_to '廃棄情報追加', new_waste_path, class: "btn btn-lg btn-outline-secondary" %>
+  <%= link_to t('.new_path'), new_waste_path, class: "btn btn-lg btn-outline-secondary" %>
 </div>
 
 <div class="row">
@@ -9,9 +9,9 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">食材名</th>
-          <th scope="col">廃棄量</th>
-          <th scope="col">日付</th>
+          <th scope="col"><%= Waste.human_attribute_name :ingredient_name %></th>
+          <th scope="col"><%= Waste.human_attribute_name :amount %></th>
+          <th scope="col"><%= Waste.human_attribute_name :date %></th>
           <th scope="col"> </th>
         </tr>
       </thead>
@@ -22,8 +22,8 @@
             <td><%= waste.amount %></td>
             <td><%= waste.date %></td>
             <td>
-              <%= link_to '編集', edit_waste_path(waste), class: "btn btn-sm btn-outline-success" %>
-              <%= link_to '削除', waste_path(waste), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              <%= link_to t('defaults.edit'), edit_waste_path(waste), class: "btn btn-sm btn-outline-success" %>
+              <%= link_to t('defaults.delete'), waste_path(waste), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
             </td>
           </tr>
         <% end %>

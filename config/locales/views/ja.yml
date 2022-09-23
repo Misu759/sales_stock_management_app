@@ -1,0 +1,111 @@
+ja:
+  defaults:
+    back: '[ 戻る ]'
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+    prompt: '選択してください'
+  layouts:
+    navigation:
+      title: 'CROSSPOINT'
+      sales_dropdown: '売上'
+      sales: '売上一覧'
+      new_sale: '売上追加'
+      stocks: '在庫一覧'
+      purchases_dropdown: '発注'
+      purchases: '発注一覧'
+      new_purchase: '発注情報追加'
+      menu_dropdown: 'メニュー'
+      menus: 'メニュー一覧'
+      new_menu: 'メニュー情報追加'
+      ingredients_dropdown: '食材情報'
+      ingredients: '食材情報一覧'
+      new_ingredient: '食材情報追加'
+  home:
+    index:
+      profit: '目標利益 : '
+      sales: '必要な売上 : '
+  menus:
+    new:
+      title: 'メニュー情報追加'
+    edit:
+      title: 'メニュー情報編集'
+    index:
+      title: 'メニュー情報'
+      new_path: '[ メニュー情報を追加 ]'
+    show:
+      cost_price: '原価'
+      cost_rate: '原価率'
+  ingredients:
+    edit:
+      title: '食材情報編集'
+    new:
+      title: '食材情報追加'
+    index:
+      title: '食材情報一覧'
+  purchases:
+    index:
+      title: '発注履歴'
+      summary: '発注一覧'
+    edit:
+      title: '発注情報編集'
+    new:
+      title: '発注情報追加'
+    show:
+      title: '発注詳細'
+      new_path: '[ 発注情報を追加 ]'
+  sales:
+    search_form:
+      search: '検索'
+      date: '日付'
+    edit:
+      title: '売上情報編集'
+    index:
+      title: '売上一覧'
+      total_sales: '売上高'
+      gross_profit: '粗利益'
+      operating_income: '営業利益'
+      per_menu: 'メニュー別売上' 
+    new:
+      title: '売上情報追加'
+    search:
+      title: '売上一覧'
+      total_sales: '売上高'
+      gross_profit: '粗利益'
+      operating_income: '営業利益'
+      per_menu: 'メニュー別売上' 
+      not_found: '該当する売上情報がありません'
+    show: 
+      title: '売上詳細'
+      total_sales: '売上高'
+      new_path: '[ 売上情報追加 ]'
+  stocks:
+    index:
+      title: '在庫一覧'
+      carrying_stock: '繰り越し在庫量'
+      working_stock: '営業日在庫量'
+      waste_path: '廃棄情報一覧'
+    edit:
+      title: '在庫情報編集'
+    search:
+      title: '在庫一覧（検索結果）'
+      carrying_stock: '繰り越し在庫量'
+      working_stock: '営業日在庫量'
+      waste_path: '廃棄情報一覧'
+      not_found: '該当する食材はありません'
+    show: 
+      title: '在庫詳細'
+  wastes:
+    edit:
+      title: '廃棄情報編集'
+    new:
+      title: '廃棄情報追加'
+    index:
+      title: '廃棄情報'
+      new_path: '廃棄情報を追加'
+
+
+
+
+
+

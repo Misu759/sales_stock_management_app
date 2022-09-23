@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4 font-italic">Menu</h1>
+<h1 class="text-center mt-4 font-italic"><%= t '.title'%></h1>
 
 <div class="container">
   <% @menus.each do |menu| %>
@@ -11,15 +11,15 @@
           <div class="card-body">
             <h5 class="card-title"><%= menu.regular_cost %></h5>
             <p class="card-text"><%= truncate(menu.description, length: 100) %></p>
-            <%= link_to "詳細", menu_path(menu), class: "btn btn-outline-success" %>
-            <%= link_to "編集", edit_menu_path(menu), class: "btn btn-outline-info" %>
-            <%= link_to "削除", menu_path(menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <%= link_to t('defaults.show'), menu_path(menu), class: "btn btn-outline-success" %>
+            <%= link_to t('defaults.edit'), edit_menu_path(menu), class: "btn btn-outline-info" %>
+            <%= link_to t('defaults.delete'), menu_path(menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
   <div class="text-center">
-    <%= link_to "メニュー情報を追加", new_menu_path, class: "btn btn-outline-secondary" %>
+    <%= link_to t('.new_path'), new_menu_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>

@@ -1,20 +1,20 @@
-<h1 class="mt-4 mb-4">在庫一覧 (検索結果) </h1>
+<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
 <div class="mt-4 mb-4">
   <%= render 'search_form'%>
 </div>
 
 <% if !@results.exists? %>
-  <p class="mt-5">該当する食材はありません.</p>
+  <p class="mt-5"><%= t '.not_found' %></p>
 <% else %>
   <div class="row">
     <div class="col-9">  
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th scope="col">食材名</th>
-            <th scope="col">繰り越し在庫量</th>
-            <th scope="col">営業日在庫量</th>
+            <th scope="col"><%= Ingredient.human_attribute_name :name %></th>
+            <th scope="col"><%= t '.carrying_stock' %></th>
+            <th scope="col"><%= t '.working_stock' %></th>
             <th scope="col"> </th>
           </tr>
         </thead>
@@ -24,7 +24,7 @@
               <th scope="row"><%= stock.ingredient.name %></th>
               <td><%= stock.amount %></td>
               <td><%= stock.amount %></td>
-              <td><%= link_to '詳細', stock_path(stock), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to t('defaults.show'), stock_path(stock), class: "btn btn-sm btn-outline-success" %></td>
             </tr>
           <% end %>
         </tbody>

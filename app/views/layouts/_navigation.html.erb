@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <%= link_to "CROSSPOINT", root_path, class: "navbar-brand", id: "logo" %>
+    <%= link_to t('.title'), root_path, class: "navbar-brand", id: "logo" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,41 +9,41 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            売上
+            <%= t '.sales_dropdown'%>
           </a>
           <div class="dropdown-menu">
-            <%= link_to '売上一覧', sales_path, class: "dropdown-item" %>
-            <%= link_to '売上追加', new_sale_path, class: "dropdown-item" %>
+            <%= link_to t('.sales'), sales_path, class: "dropdown-item" %>
+            <%= link_to t('.new_sale'), new_sale_path, class: "dropdown-item" %>
           </div>
         </li>
         <li class="nav-item">
-          <%= link_to '在庫一覧', stocks_path, class: "nav-link" %>
+          <%= link_to t('.stocks'), stocks_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            発注
+            <%= t '.purchases_dropdown'%>
           </a>
           <div class="dropdown-menu">
-            <%= link_to '発注履歴', purchases_path, class: "dropdown-item" %>
-            <%= link_to '発注追加', new_purchase_path, class: "dropdown-item" %>
+            <%= link_to t('.purchases'), purchases_path, class: "dropdown-item" %>
+            <%= link_to t('.new_purchase'), new_purchase_path, class: "dropdown-item" %>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            メニュー
+            <%= t '.menu_dropdown'%>
           </a>
           <div class="dropdown-menu">
-            <%= link_to 'メニュー一覧', menus_path, class: 'dropdown-item'%>
-            <%= link_to '新規メニュー追加', new_menu_path, class: 'dropdown-item'%>
+            <%= link_to t('.menus'), menus_path, class: 'dropdown-item'%>
+            <%= link_to t('.new_menu'), new_menu_path, class: 'dropdown-item'%>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            食材
+            <%= t '.ingredients_dropdown' %>
           </a>
           <div class="dropdown-menu">
-            <%= link_to '食材情報一覧', ingredients_path, class: 'dropdown-item'%>
-            <%= link_to '食材情報追加', new_ingredient_path, class: 'dropdown-item'%>
+            <%= link_to t('.ingredients'), ingredients_path, class: 'dropdown-item'%>
+            <%= link_to t('.new_ingredient'), new_ingredient_path, class: 'dropdown-item'%>
           </div>
         </li>
       </ul>

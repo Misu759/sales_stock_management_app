@@ -1,21 +1,21 @@
-<h2 class="mt-4 mb-4">発注履歴</h2>
+<h2 class="mt-4 mb-4"><%= t '.title' %></h2>
 
 <div class="col-9">
   <%= line_chart @purchase_graph_data %>
 </div>
 
 
-<h3 class="mt-4 mb-4">食品別情報</h3>
+<h3 class="mt-4 mb-4"><%= t '.summary' %></h3>
 
 <div class="row text-center">
   <div class="col-9">  
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">食品名</th>
-          <th scope="col">日付</th>
-          <th scope="col">発注量</th>
-          <th scope="col">金額</th>
+          <th scope="col"><%= Purchase.human_attribute_name :amount %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :purchase_date %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :waste_date %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :delivery_cost %></th>
           <th scope="col"> </th>
         </tr>
       </thead>

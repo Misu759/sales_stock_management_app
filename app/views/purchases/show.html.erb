@@ -1,4 +1,4 @@
-<h1 class="mt-4 mb-4">発注詳細</h1>
+<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
 
 <h2 class="text-center mt-4"><%= @purchase.ingredient.name %></h2>
@@ -8,23 +8,23 @@
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
-          <%= "日付 : #{@purchase.purchase_date}" %>
+          <%= "#{Purchase.human_attribute_name :purchase_date} : #{@purchase.purchase_date}" %>
         </div>
         <div class="card-body">
           <div class="card-text text-center">
-            <p><%= "量 : #{@purchase.amount}" %></p>
-            <p><%= "発注費 : #{@purchase.ingredient.purchase_cost * @purchase.amount}円" %></p>
-            <p><%= "廃棄予定 : #{@purchase.waste_date}" %></p>
-            <p><%= "配送費 : #{@purchase.delivery_cost}"%></p>
+            <p><%= "#{Purchase.human_attribute_name :amount} : #{@purchase.amount}" %></p>
+            <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@purchase.ingredient.purchase_cost * @purchase.amount}円" %></p>
+            <p><%= "#{Purchase.human_attribute_name :waste_date} : #{@purchase.waste_date}" %></p>
+            <p><%= "#{Purchase.human_attribute_name :delivery_cost} : #{@purchase.delivery_cost}"%></p>
             <p><%= "担当者 :" %></p>
           </div>
-          <%= link_to "Edit", edit_purchase_path(@purchase), class: "btn btn-outline-info" %>
-          <%= link_to "Delete", purchase_path(@purchase), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to t('defaults.edit'), edit_purchase_path(@purchase), class: "btn btn-outline-info" %>
+          <%= link_to t('defaults.delete'), purchase_path(@purchase), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
       <div class="mb-3 text-center">
-        <p><%= link_to '[ 発注情報を追加 ]', new_purchase_path, class: "text-info" %></p>
-        <%= link_to '[ 戻る ]', purchases_path, class: "text-info" %>
+        <p><%= link_to t('.new_path'), new_purchase_path, class: "text-info" %></p>
+        <%= link_to t('defaults.back'), purchases_path, class: "text-info" %>
       </div>
     </div>
   </div>

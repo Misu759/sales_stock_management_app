@@ -1,24 +1,24 @@
-<h1 class="mt-4 mb-4">売上一覧</h1>
+<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
 <%= render 'search_form' %>
 
 <div class="jumbotron mt-4">
   <h1 class="display-4"><%= Date.today %> </h1>
-  <h2 class="lead"><%= "売上高  : #{@total_sales}"%></h2>
-  <h2 class="lead"><%= "粗利益  : #{@gross_profit}"%></h2>
-  <h2 class="lead"><%= "営業利益 : #{@total_sales - @gross_profit}"%></h2>
+  <h2 class="lead"><%= "#{t '.total_sales'}  : #{@total_sales}"%></h2>
+  <h2 class="lead"><%= "#{t '.gross_profit'}  : #{@gross_profit}"%></h2>
+  <h2 class="lead"><%= "#{t '.operating_income'} : #{@total_sales - @gross_profit}"%></h2>
   <hr class="my-4">
 </div>
-<h2 class="mt-4 mb-4">商品別売上</h2>
+<h2 class="mt-4 mb-4"><%= t '.per_menu' %></h2>
 <div class="row">
   <div class="col-9">  
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">メニュー名</th>
-          <th scope="col">日付</th>
-          <th scope="col">個数</th>
-          <th scope="col">売上</th>
+          <th scope="col"><%= Menu.human_attribute_name :name %></th>
+          <th scope="col"><%= Sale.human_attribute_name :date %></th>
+          <th scope="col"><%= Sale.human_attribute_name :quantity %></th>
+          <th scope="col"><%= t '.total_sales' %></th>
           <th scope="col"> </th>
         </tr>
       </thead>
@@ -29,7 +29,7 @@
             <td><%= sale.date %></td>
             <td><%= sale.quantity %></td>
             <td><%= sale.menu.regular_cost * sale.quantity %></td>
-            <td><%= link_to '詳細', sale_path(sale), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to t('defaults.show'), sale_path(sale), class: "btn btn-sm btn-outline-success" %></td>
           </tr>
         <% end %>
       </tbody>

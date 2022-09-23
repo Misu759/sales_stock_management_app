@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    models:
+      sale: '売上'
+      menu: 'メニュー'
+      ingredient: '食材'
+      purchase: '発注'
+      stock: '在庫'
+      waste: '廃棄'
+    attributes:
+      menu:
+        name: 'メニュー名'
+        regular_cost: '定価'
+        description: '詳細'
+      sale:
+        quantity: '売上個数'
+        date: '日付'
+      ingredient:
+        name: '食材名'
+        purchase_cost: '単価'
+      purchase:
+        amount: '発注量'
+        purchase_date: '発注日'
+        waste_date: '廃棄予定日'
+        delivery_cost: '配送費'
+      stock:
+        ingredient_name: '食材名'
+        amount: '在庫量'
+        carrying_stock: '繰り越し在庫量'
+        working_stock: '営業日在庫量'
+      waste:
+        ingredient_name: '食材名'
+        amount: '廃棄量'
+        date: '廃棄日'

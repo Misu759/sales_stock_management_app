@@ -6,14 +6,14 @@
         <div class="form-group row">
           <%= f.label :name, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: '選択してください' }, class: "form-control shadow rounded" %>
+            <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: t('defaults.prompt') }, class: "form-control shadow rounded" %>
           </div>
         </div>
 
         <div class="form-group row">
           <%= f.label :amount, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.number_field :amount, class: "form-control shadow rounded", placeholder: "発注量" %>
+            <%= f.number_field :amount, class: "form-control shadow rounded", placeholder: true %>
           </div>
         </div>
 
@@ -34,7 +34,7 @@
         <div class="form-group row">
           <%= f.label :delivery_cost, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
-            <%= f.number_field :delivery_cost, class: "form-control shadow rounded", placeholder: "配送費" %>
+            <%= f.number_field :delivery_cost, class: "form-control shadow rounded", placeholder: true %>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
         </div>
       <% end %>
       <div class="mb-3 text-center">
-        <%= link_to '[ 戻る ]', purchases_path, class: "text-info" %>
+        <%= link_to t('defaults.back'), purchases_path, class: "text-info" %>
       </div>
     </div>
   </div>

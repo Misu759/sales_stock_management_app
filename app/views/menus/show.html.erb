@@ -9,20 +9,20 @@
         </div>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@menu.description) %></div>
-          <p>材料</p>
+          <p><%= Ingredient.model_name.human %></p>
           <% @menu_ingredients.each do |menu_ingredient| %>
             <p><%= "#{menu_ingredient.ingredient.name} : #{menu_ingredient.amount} g " %></p>
           <% end %>
 
-          <p><%= "定価 : #{@menu.regular_cost}円" %></p>
-          <p><%= "原価 : #{@menu.cost_price}円" %></p>
-          <p><%= "原価率 : #{(@menu.cost_price.to_f / @menu.regular_cost.to_f).truncate(2) * 100 }%" %></p>
-          <%= link_to "Edit", edit_menu_path(@menu), class: "btn btn-outline-info" %>
-          <%= link_to "Delete", menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <p><%= "#{Menu.human_attribute_name :regular_cost} : #{@menu.regular_cost}円" %></p>
+          <p><%= "#{t '.cost_price'} : #{@menu.cost_price}円" %></p>
+          <p><%= "#{t '.cost_rate'} : #{(@menu.cost_price.to_f / @menu.regular_cost.to_f).truncate(2) * 100 }%" %></p>
+          <%= link_to t('defaults.edit'), edit_menu_path(@menu), class: "btn btn-outline-info" %>
+          <%= link_to t('defaults.delete'), menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
       <div class="mb-3 text-center">
-        <%= link_to '[ 戻る ]', menus_path, class: "text-info" %>
+        <%= link_to t('defaults.back'), menus_path, class: "text-info" %>
       </div>
     </div>
   </div>

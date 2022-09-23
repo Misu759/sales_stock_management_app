@@ -1,13 +1,13 @@
-<h1 class="mt-4 mb-4">在庫詳細</h1>
+<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
 <div class="row">
   <div class="col-9">  
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col">食材名</th>
-          <th scope="col">繰り越し在庫量</th>
-          <th scope="col">営業日在庫量</th>
+          <th scope="col"><%= Stock.human_attribute_name :ingredient_name %></th>
+          <th scope="col"><%= Stock.human_attribute_name :carrying_stock %></th>
+          <th scope="col"><%= Stock.human_attribute_name :working_stock %></th>
           <th scope="col"> </th>
         </tr>
       </thead>
@@ -16,8 +16,8 @@
           <th scope="row"><%= @stock.ingredient.name %></th>
           <td><%= @stock.amount %></td>
           <td><%= @stock.amount %></td>
-          <td><%= link_to '編集', edit_stock_path(@stock), class: "btn btn-sm btn-outline-success" %></td>
-          <td><%= link_to '削除', stock_path(@stock), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %></td>
+          <td><%= link_to t('defaults.edit'), edit_stock_path(@stock), class: "btn btn-sm btn-outline-success" %></td>
+          <td><%= link_to t('defaults.delete'), stock_path(@stock), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %></td>
         </tr>
       </tbody>
     </table>

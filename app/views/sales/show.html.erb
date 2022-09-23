@@ -1,4 +1,4 @@
-<h2 class="text-center mt-4">売上詳細</h2>
+<h2 class="text-center mt-4"><%= t '.title' %></h2>
 
 
 <div class="container">
@@ -6,21 +6,21 @@
     <div class="col-10 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
-          <%= "#{@sale.date} #{@sale.menu.name} 売上" %>
+          <%= "#{@sale.date} #{@sale.menu.name} #{t '.total_sales' }" %>
         </div>
         <div class="card-body">
-          <p><%= "出品数 : #{@sale.quantity}" %></p>
-          <p><%= "売上 : #{@sale.menu.regular_cost * @sale.quantity}" %></p>
-          <%= link_to "Edit", edit_sale_path(@sale), class: "btn btn-outline-info" %>
-          <%= link_to "Delete", sale_path(@sale), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <p><%= "#{Sale.human_attribute_name :quantity} : #{@sale.quantity}" %></p>
+          <p><%= "#{t '.total_sales'} : #{@sale.menu.regular_cost * @sale.quantity}" %></p>
+          <%= link_to t('defaults.edit'), edit_sale_path(@sale), class: "btn btn-outline-info" %>
+          <%= link_to t('defaults.delete'), sale_path(@sale), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
       <div class="mb-3 text-center">
-        <%= link_to '[ 売上情報追加 ]', new_sale_path, class: "text-info" %>
+        <%= link_to t('.new_path'), new_sale_path, class: "text-info" %>
       </div>
 
       <div class="mb-3 text-center">
-        <%= link_to '[ 戻る ]', sales_path, class: "text-info" %>
+        <%= link_to t('defaults.back'), sales_path, class: "text-info" %>
       </div>
     </div>
   </div>
