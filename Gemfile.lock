@@ -76,6 +76,8 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.11.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -215,6 +217,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chartkick
+  enum_help
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)

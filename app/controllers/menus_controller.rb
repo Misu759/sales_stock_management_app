@@ -50,5 +50,5 @@ end
 
 private
 def menu_params
-  params.require(:menu).permit(:name, :regular_cost, :description)
+  params.require(:menu).permit(:name, :regular_cost, :description, :category)
 end

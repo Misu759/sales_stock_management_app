@@ -12,6 +12,7 @@ ja:
         name: 'メニュー名'
         regular_cost: '定価'
         description: '詳細'
+        category: 'カテゴリー'
       sale:
         quantity: '売上個数'
         date: '日付'
@@ -32,3 +33,9 @@ ja:
         ingredient_name: '食材名'
         amount: '廃棄量'
         date: '廃棄日'
+  enums:
+    menu:
+      category:
+        food: 'フード'
+        sweets: 'スイーツ'
+        drink: 'ドリンク'

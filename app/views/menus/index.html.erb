@@ -1,6 +1,10 @@
 <h1 class="text-center mt-4 font-italic"><%= t '.title'%></h1>
 
-<div class="container">
+<div class="text-center mt-5">
+  <%= link_to t('.new_path'), new_menu_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<div class="container mt-4">
   <% @menus.each do |menu| %>
     <div class="row justify-content-md-center">
       <div class="col-8 mt-4">
@@ -19,7 +23,4 @@
       </div>
     </div>
   <% end %>
-  <div class="text-center">
-    <%= link_to t('.new_path'), new_menu_path, class: "btn btn-outline-secondary" %>
-  </div>
 </div>
