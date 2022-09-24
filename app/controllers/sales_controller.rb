@@ -2,9 +2,7 @@ class SalesController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @sales = Sale.where(date: Date.today)
-    @total_sales = total_sales(@sales)
-    @gross_profit = gross_profit(@sales)
+    @sales_graph_data = sales_per_date
   end
 
   def show
@@ -73,4 +71,17 @@ class SalesController < ApplicationController
     sales.each {|sale| total += sale.menu.cost_price * sale.quantity}
     total
   end
+
+  def sales_per_date
+    sales_graph_data = []
+    days = 7
+    (0..days - 1).each do |i|
+      day = Date.today - i.days
+      sales = Sale.where(date: day)
+      total_sales = total_sales(sales)
+      sales_graph_data << [day, total_sales]
+    end
+    sales_graph_data
+  end
 end
+
