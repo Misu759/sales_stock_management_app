@@ -20,10 +20,12 @@ ja:
         name: '食材名'
         purchase_cost: '単価'
       purchase:
+        ingredient_name: '食材名'
         amount: '発注量'
         purchase_date: '発注日'
         waste_date: '廃棄予定日'
         delivery_cost: '配送費'
+        purchase_cost: '発注費'
       stock:
         ingredient_name: '食材名'
         amount: '在庫量'

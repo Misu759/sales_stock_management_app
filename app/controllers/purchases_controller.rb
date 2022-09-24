@@ -52,7 +52,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_cost_per_date
-    cost_per_date_columns = Purchase.joins(:ingredient).select(:purchase_date, "sum(amount * purchase_cost) as total").group(:purchase_date)
+    cost_per_date_columns = Purchase.joins(:ingredient).select(:purchase_date, "SUM(amount * purchase_cost) AS total").group(:purchase_date)
     graph_data = []
     cost_per_date_columns.each do |cost_per_date_column|
       graph_data.append([cost_per_date_column.purchase_date, cost_per_date_column.total])

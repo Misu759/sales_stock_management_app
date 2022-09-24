@@ -12,10 +12,11 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th scope="col"><%= Purchase.human_attribute_name :amount %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :ingredient_name %></th>
           <th scope="col"><%= Purchase.human_attribute_name :purchase_date %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :amount %></th>
           <th scope="col"><%= Purchase.human_attribute_name :waste_date %></th>
-          <th scope="col"><%= Purchase.human_attribute_name :delivery_cost %></th>
+          <th scope="col"><%= Purchase.human_attribute_name :purchase_cost%></th>
           <th scope="col"> </th>
         </tr>
       </thead>
@@ -25,8 +26,9 @@
             <th scope="row"><%= purchase.ingredient.name %></th>
             <td><%= l purchase.purchase_date, format: :short %></td>
             <td><%= purchase.amount %></td>
-            <td><%= purchase.ingredient.purchase_cost * purchase.amount %></td>
-            <td><%= link_to '詳細', purchase_path(purchase), class: "btn btn-sm btn-outline-success" %></td>
+            <td><%= purchase.waste_date %></td>
+            <td><%= purchase.ingredient.purchase_cost * purchase.amount + purchase.delivery_cost %></td>
+            <td><%= link_to t('defaults.show'), purchase_path(purchase), class: "btn btn-sm btn-outline-success" %></td>
           </tr>
         <% end %>
       </tbody>
