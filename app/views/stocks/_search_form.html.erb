@@ -1,8 +1,0 @@
-<h3>検索</h3>
-<%= search_form_for(@q, url: search_stocks_path) do |f| %>
-  <div class="form-group row">
-    <%= f.label :name_cont, (Ingredient.human_attribute_name :name), class: 'col-1 col-form-label'%>
-    <%= f.search_field :name_cont, class:'form-control col-4', placeholder: (Ingredient.human_attribute_name :name) %>
-    <%= f.submit class: 'btn btn-outline-secondary' %>
-  </div>
-<% end %>
