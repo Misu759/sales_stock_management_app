@@ -11,15 +11,14 @@ ja:
       sales_dropdown: '売上'
       sales: '売上一覧'
       new_sale: '売上追加'
-      stocks: '在庫一覧'
       purchases_dropdown: '発注'
       purchases: '発注一覧'
       new_purchase: '発注情報追加'
       menu_dropdown: 'メニュー'
       menus: 'メニュー一覧'
       new_menu: 'メニュー情報追加'
-      ingredients_dropdown: '食材情報'
-      ingredients: '食材情報一覧'
+      ingredients_dropdown: '在庫情報'
+      ingredients: '在庫一覧'
       new_ingredient: '食材情報追加'
   home:
     index:
@@ -42,7 +41,11 @@ ja:
     new:
       title: '食材情報追加'
     index:
-      title: '食材情報一覧'
+      title: '在庫情報'
+      waste_path: '廃棄情報一覧'
+    search:
+      title: '在庫情報'
+      waste_path: '廃棄情報一覧'
   purchases:
     index:
       title: '発注履歴'
@@ -79,22 +82,6 @@ ja:
       title: '売上詳細'
       total_sales: '売上高'
       new_path: '[ 売上情報追加 ]'
-  stocks:
-    index:
-      title: '在庫一覧'
-      carrying_stock: '繰り越し在庫量'
-      working_stock: '営業日在庫量'
-      waste_path: '廃棄情報一覧'
-    edit:
-      title: '在庫情報編集'
-    search:
-      title: '在庫一覧（検索結果）'
-      carrying_stock: '繰り越し在庫量'
-      working_stock: '営業日在庫量'
-      waste_path: '廃棄情報一覧'
-      not_found: '該当する食材はありません'
-    show: 
-      title: '在庫詳細'
   wastes:
     edit:
       title: '廃棄情報編集'

@@ -11,13 +11,14 @@
         <tr>
           <th scope="col"><%= Ingredient.human_attribute_name :name %></th>
           <th scope="col"><%= Ingredient.human_attribute_name :stock %></th>
-          <th scope="col"></th>
+          <th scope="col"> </th>
         </tr>
       </thead>
       <tbody>
-        <% @ingredients.each do |ingredient| %>
+        <% @results.each do |ingredient| %>
           <tr>
             <th scope="row"><%= ingredient.name %></th>
+            <!-- TODO(繰り越し在庫量，営業日在庫量の計算) -->
             <td><%= ingredient.stock %></td>
             <td>
               <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
@@ -30,6 +31,7 @@
     </table>
   </div>
 </div>
+
 
 <div class="text-center col-9 mt-4">
   <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>

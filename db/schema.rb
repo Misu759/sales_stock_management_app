@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_23_100157) do
+ActiveRecord::Schema.define(version: 2022_09_26_043158) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name", null: false
     t.float "purchase_cost", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stock", default: 0, null: false
     t.index ["name"], name: "index_ingredients_on_name", unique: true
   end
 
@@ -57,14 +58,6 @@ ActiveRecord::Schema.define(version: 2022_09_23_100157) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "menu_id"
     t.date "date", null: false
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.integer "ingredient_id"
-    t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_stocks_on_ingredient_id"
   end
 
   create_table "wastes", force: :cascade do |t|

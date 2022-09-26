@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
 
   def index
     @ingredients = Ingredient.all
@@ -32,6 +33,10 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def show
+    @ingredient = Ingredient.find(params[:id])
+  end
+
   def destroy
     @ingredient = Ingredient.find(params[:id])
     @ingredient.destroy
@@ -39,9 +44,17 @@ class IngredientsController < ApplicationController
     redirect_to ingredients_path
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :purchase_cost)
+    params.require(:ingredient).permit(:name, :purchase_cost, :stock)
+  end
+
+  def set_q
+    @q = Ingredient.ransack(params[:q])
   end
 
 end

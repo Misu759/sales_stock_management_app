@@ -19,6 +19,7 @@ ja:
       ingredient:
         name: '食材名'
         purchase_cost: '単価'
+        stock: '在庫量'
       purchase:
         ingredient_name: '食材名'
         amount: '発注量'
@@ -26,11 +27,6 @@ ja:
         waste_date: '廃棄予定日'
         delivery_cost: '配送費'
         purchase_cost: '発注費'
-      stock:
-        ingredient_name: '食材名'
-        amount: '在庫量'
-        carrying_stock: '繰り越し在庫量'
-        working_stock: '営業日在庫量'
       waste:
         ingredient_name: '食材名'
         amount: '廃棄量'

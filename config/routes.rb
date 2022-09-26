@@ -6,8 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :ingredients, except: [:show]
-  resources :stocks, only: %i[index show edit update destroy] do
+  resources :ingredients do
     collection do
       get 'search'
     end
