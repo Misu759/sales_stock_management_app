@@ -43,3 +43,42 @@ body {
 #page-content {
   flex: 1 0 auto;
 }
+
+/*ページネーションのデザイン*/
+.pagination {
+  justify-content: center;
+}
+
+.pagination>.active>a {     
+  border-radius: 5px;     /*角を丸くする*/
+}
+
+.pagination > li > a {
+  border-color: #bab3ad;
+  background-color: #dbd3ca;
+  color: brown;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+  color: brown;
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+
+.page-item.active .page-link 
+{
+  color: #dbd3ca;
+  background-color: brown;
+  border: solid 1px brown;
+}
+
+.pagination > .active > a:hover
+{
+  background-color: brown;
+  border: solid 1px brown;
+}

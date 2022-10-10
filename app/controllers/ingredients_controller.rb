@@ -2,7 +2,7 @@ class IngredientsController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.page(params[:page])
   end
 
   def new

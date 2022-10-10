@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
+  before_action :set_menu, only: %i[destroy update edit show]
 
   def index
-    @menus = Menu.all
+    @menus = Menu.page(params[:page])
   end
 
   def new
@@ -20,16 +21,13 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.find(params[:id])
     @menu_ingredients = MenuIngredient.where(menu: @menu)
   end
 
   def edit
-    @menu = Menu.find(params[:id])
   end
 
   def update
-    @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
       flash[:notice] = "メニュー情報を更新しました"
       redirect_to @menu
@@ -40,7 +38,6 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu = Menu.find(params[:id])
     @menu.destroy
     flash[:notice] = "#{@menu.name}を削除しました"
     redirect_to menus_path
@@ -49,6 +46,11 @@ class MenusController < ApplicationController
 end
 
 private
+
+def set_menu
+  @menu = Menu.find(params[:id])
+end
+
 def menu_params
   params.require(:menu).permit(:name, :regular_cost, :description, :category)
 end

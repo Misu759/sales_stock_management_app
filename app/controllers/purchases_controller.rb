@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
 
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.all.includes(:ingredient).page(params[:page])
     @purchase_graph_data = purchase_cost_per_date
   end
 

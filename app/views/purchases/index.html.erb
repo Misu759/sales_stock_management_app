@@ -9,7 +9,7 @@
 
 <div class="row text-center">
   <div class="col-9">  
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover mt-4">
       <thead>
         <tr>
           <th scope="col"><%= Purchase.human_attribute_name :ingredient_name %></th>
@@ -33,5 +33,8 @@
         <% end %>
       </tbody>
     </table>
+
+    <%= paginate @purchases %>
+
   </div>
 </div>
