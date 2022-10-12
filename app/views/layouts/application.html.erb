@@ -10,7 +10,11 @@
   </head>
 
   <body class="d-flex flex-column">
-    <%= render 'layouts/navigation' %>
+    <% if logged_in? %>
+      <%= render 'layouts/navigation' %>
+    <% else %>
+      <%= render 'layouts/before_login_navigation' %>
+    <% end %>
     <div id="page-content">
       <div class="container">
         <%= render 'layouts/messages' %>

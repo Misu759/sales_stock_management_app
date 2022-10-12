@@ -20,10 +20,25 @@ ja:
       ingredients_dropdown: '在庫情報'
       ingredients: '在庫一覧'
       new_ingredient: '食材情報追加'
+      logout: 'ログアウト'
+    before_login_navigation:
+      title: 'CROSSPOINT'
+      login: 'ログイン'
   home:
     index:
       profit: '目標利益 : '
       sales: '必要な売上 : '
+  users:
+    new:
+      title: 'ユーザー登録'
+      login_path: 'ログイン画面へ'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      mail: 'メール'
+      password: 'パスワード'
+      signup_path: '新規登録画面へ'
+      login_btn: 'ログイン'
   menus:
     new:
       title: 'メニュー情報追加'

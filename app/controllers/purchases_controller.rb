@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :set_purchase, only: %i[show edit update destroy]
 
   def index
     @purchases = Purchase.all.includes(:ingredient).page(params[:page])
@@ -20,16 +21,11 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def show
-    @purchase = Purchase.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @purchase = Purchase.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @purchase = Purchase.find(params[:id])
     if @purchase.update(purchase_params)
       flash[:notice] = '発注情報の更新完了'
       redirect_to @purchase
@@ -39,13 +35,16 @@ class PurchasesController < ApplicationController
   end
 
   def destroy
-    @purchase = Purchase.find(params[:id])
-    @purchase.destroy
+    @purchase.destroy!
     flash[:notice] = "#{@purchase.ingredient.name}の発注情報を削除しました"
     redirect_to purchases_path
   end
 
   private
+
+  def set_purchase
+    @purchase = Purchase.find(params[:id])
+  end
 
   def purchase_params
     params.require(:purchase).permit(:ingredient_id, :amount, :purchase_date, :waste_date, :delivery_cost)

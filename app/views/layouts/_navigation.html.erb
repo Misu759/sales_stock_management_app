@@ -43,6 +43,11 @@
             <%= link_to t('.new_ingredient'), new_ingredient_path, class: 'dropdown-item'%>
           </div>
         </li>
+        <li>
+          <div class="nav-item">
+            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
       </ul>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
-  before_action :set_q, only: [:index, :search]
+  before_action :set_ingredient, only: %i[edit update show destroy]
+  before_action :set_q, only: %i[index search]
 
   def index
     @ingredients = Ingredient.page(params[:page])
@@ -19,12 +20,9 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def edit
-    @ingredient = Ingredient.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @ingredient = Ingredient.find(params[:id])
     if @ingredient.update(ingredient_params)
       flash[:notice] = '食材情報を更新しました'
       redirect_to ingredients_path
@@ -33,13 +31,10 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def show
-    @ingredient = Ingredient.find(params[:id])
-  end
+  def show; end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
+    @ingredient.destroy!
     flash[:notice] = "#{@ingredient.name}を削除しました"
     redirect_to ingredients_path
   end
@@ -51,6 +46,10 @@ class IngredientsController < ApplicationController
   private
   def ingredient_params
     params.require(:ingredient).permit(:name, :purchase_cost, :stock)
+  end
+
+  def set_ingredient
+    @ingredient = Ingredient.find(params[:id])
   end
 
   def set_q

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
+
+  resources :users, only: %i[new create]
   resources :menus
   resources :sales do
     collection do
@@ -12,5 +17,5 @@ Rails.application.routes.draw do
     end
   end
   resources :purchases
-  resources :wastes, except: [:show]
+  resources :wastes, except: %i[show]
 end

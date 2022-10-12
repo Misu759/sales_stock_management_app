@@ -24,8 +24,7 @@ class MenusController < ApplicationController
     @menu_ingredients = MenuIngredient.where(menu: @menu)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @menu.update(menu_params)
@@ -38,7 +37,7 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu.destroy
+    @menu.destroy!
     flash[:notice] = "#{@menu.name}を削除しました"
     redirect_to menus_path
   end

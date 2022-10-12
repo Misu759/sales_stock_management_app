@@ -7,6 +7,7 @@ ja:
       purchase: '発注'
       stock: '在庫'
       waste: '廃棄'
+      user: 'ユーザー'
     attributes:
       menu:
         name: 'メニュー名'
@@ -31,6 +32,12 @@ ja:
         ingredient_name: '食材名'
         amount: '廃棄量'
         date: '廃棄日'
+      user:
+        last_name: '姓'
+        first_name: '名'
+        email: 'メール'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認用）'
   enums:
     menu:
       category:
