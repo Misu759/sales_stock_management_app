@@ -72,9 +72,6 @@ ja:
       title: '売上情報編集'
     index:
       title: '売上一覧'
-      total_sales: '売上高'
-      gross_profit: '粗利益'
-      operating_income: '営業利益'
       per_menu: 'メニュー別売上' 
       new_path: '売上情報入力ページへ'
     new:
@@ -82,7 +79,7 @@ ja:
     search:
       title: '売上一覧'
       total_sales: '売上高'
-      gross_profit: '粗利益'
+      cost_of_sales: '原価'
       operating_income: '営業利益'
       per_menu: 'メニュー別売上' 
       not_found: '該当する売上情報がありません'

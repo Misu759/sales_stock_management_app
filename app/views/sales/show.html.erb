@@ -4,15 +4,51 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-10 mt-4">
-      <div class="card text-center shadow mb-5 bg-white rounded">
-        <div class="card-header font-italic">
-          <%= "#{l @sale.date, format: :short } #{@sale.menu.name} #{t '.total_sales' }" %>
-        </div>
+      <div class="card shadow mb-5 bg-white rounded">
+        <h3 class="card-header font-italic">
+          <%= "#{l @sale.date, format: :short } #{@sale.menu.name}" %>
+        </h3>
         <div class="card-body">
-          <p><%= "#{Sale.human_attribute_name :quantity} : #{@sale.quantity}" %></p>
-          <p><%= "#{t '.total_sales'} : #{@sale.menu.regular_cost * @sale.quantity}" %></p>
-          <%= link_to t('defaults.edit'), edit_sale_path(@sale), class: "btn btn-outline-info" %>
-          <%= link_to t('defaults.delete'), sale_path(@sale), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <h3>売上高</h3>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col"><%= Sale.human_attribute_name :quantity %></th>
+                <th scope="col"><%= t '.total_sales' %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col"><%= @sale.quantity %></th>
+                <th scope="col"><%= @sale.menu.regular_cost * @sale.quantity %></th>
+            </tbody>
+          </table>
+
+          <div class="text-center">
+            <%= link_to t('defaults.edit'), edit_sale_path(@sale), class: "btn btn-outline-info" %>
+            <%= link_to t('defaults.delete'), sale_path(@sale), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>  
+          </div>
+
+          <h3 class="mt-5">食材使用量</h3>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">材料名</th>
+                <th scope="col">（1品当たりの使用量）</th>
+                <th scope="col">売上に対する総使用量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @sale.menu.menu_ingredients.each do |menu_ingredient| %>
+                <tr>
+                  <th scope="row"><%= menu_ingredient.ingredient.name %></th>
+                  <td><%= menu_ingredient.amount %></td>
+                  <td><%= menu_ingredient.amount * @sale.quantity %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          
         </div>
       </div>
       <div class="mb-3 text-center">

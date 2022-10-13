@@ -2,6 +2,8 @@ class SalesController < ApplicationController
   before_action :set_sale, only: %i[show edit update destroy]
   before_action :set_q, only: [:index, :search]
 
+  include SalesHelper
+
   def index
     @sales_graph_data = sales_per_date
   end
@@ -38,15 +40,17 @@ class SalesController < ApplicationController
   end
 
   def destroy
-    @menu.destroy!
+    @sale.destroy!
     flash[:notice] = '売上情報を削除しました'
     redirect_to sales_path
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.includes(menu: :ingredients)
+    @ingredients = Ingredient.all
+    @ingredients_hash = get_amount_of_ingredients(@results)
     @total_sales = total_sales(@results)
-    @gross_profit = gross_profit(@results)
+    @cost_of_sales = cost_of_sales(@results)
   end
 
   private
@@ -68,29 +72,5 @@ class SalesController < ApplicationController
     forms = params.require(:form_sale_collection).permit(sales_attributes: [:menu_id, :quantity])
     forms[:sales_attributes].each_value { |form| form[:date] = date }
     forms
-  end
-
-  def total_sales(sales)
-    total = 0
-    sales.each {|sale| total += sale.menu.regular_cost * sale.quantity}
-    total
-  end
-
-  def gross_profit(sales)
-    total = 0
-    sales.each {|sale| total += sale.menu.cost_price * sale.quantity}
-    total
-  end
-
-  def sales_per_date
-    sales_graph_data = []
-    days = 7
-    (0..days - 1).each do |i|
-      day = Date.today - i.days
-      sales = Sale.where(date: day)
-      total_sales = total_sales(sales)
-      sales_graph_data << [day, total_sales]
-    end
-    sales_graph_data
   end
 end

@@ -1,17 +1,27 @@
-<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
-
-<%= render 'search_form' %>
+<h1 class="mt-4 mb-4"><%= l @results.first.date, format: :long %> <%= t '.title' %></h1>
 
 <% if !@results.exists? %>
   <p class="mt-4"><%= t '.not_found' %></p>
 <% else %>
-  <div class="jumbotron mt-4">
-    <h1 class="display-5"><%= l @results.first.date, format: :long %> </h1>
-    <h2 class="lead"><%= "#{t '.total_sales'}  : #{@total_sales}"%></h2>
-    <h2 class="lead"><%= "#{t '.gross_profit'}  : #{@gross_profit}"%></h2>
-    <h2 class="lead"><%= "#{t '.operating_income'} : #{@total_sales - @gross_profit}"%></h2>
-    <hr class="my-4">
+  <div class="col-9 mb-4">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col"><%= t '.total_sales' %></th>
+          <th scope="col"><%= t '.cost_of_sales' %></th>
+          <th scope="col"><%= t '.operating_income' %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @total_sales %></td>
+          <td><%= @cost_of_sales %></td>
+          <td><%= @total_sales - @cost_of_sales %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
   <h2 class="mt-4 mb-4"><%= t '.per_menu' %></h2>
   <div class="row">
     <div class="col-9">  
@@ -19,7 +29,6 @@
         <thead>
           <tr>
             <th scope="col"><%= Menu.human_attribute_name :name %></th>
-            <th scope="col"><%= Sale.human_attribute_name :date %></th>
             <th scope="col"><%= Sale.human_attribute_name :quantity %></th>
             <th scope="col"><%= t '.total_sales'%></th>
             <th scope="col"> </th>
@@ -29,10 +38,33 @@
           <% @results.each do |sale| %>
             <tr>
               <th scope="row"><%= sale.menu.name %></th>
-              <td><%= sale.date %></td>
               <td><%= sale.quantity %></td>
               <td><%= sale.menu.regular_cost * sale.quantity %></td>
-              <td><%= link_to t('defaults.edit'), sale_path(sale), class: "btn btn-sm btn-outline-success" %></td>
+              <td><%= link_to t('defaults.show'), sale_path(sale), class: "btn btn-sm btn-outline-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="mt-4 mb-4">食材使用量</h2>
+  <div class="row">
+    <div class="col-9">  
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">食材名</th>
+            <th scope="col">使用量</th>
+            <th scope="col">在庫量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ingredients.each do |ingredient| %>
+            <tr>
+              <th scope="row"><%= ingredient.name %></th>
+              <td><%= @ingredients_hash[ingredient.id] %></td>
+              <td><%= ingredient.stock %></td>
             </tr>
           <% end %>
         </tbody>
