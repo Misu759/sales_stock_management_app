@@ -3,8 +3,11 @@ module SalesHelper
   def get_amount_of_ingredients(sales)
     ingredients_hash = Hash.new
     sales.each do |sale|
-      sale.menu.menu_ingredients.each do |menu_ingredient|
-        ingredients_hash[menu_ingredient.ingredient.id] = menu_ingredient.amount * sale.quantity
+      # 売上の個数がnilでない場合のみ
+      if sale.quantity
+        sale.menu.menu_ingredients.each do |menu_ingredient|
+          ingredients_hash[menu_ingredient.ingredient.id] = menu_ingredient.amount * sale.quantity
+        end
       end
     end
     ingredients_hash

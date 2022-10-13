@@ -18,12 +18,19 @@ class SalesController < ApplicationController
     @form = Form::SaleCollection.new(sale_collection_params)
 
     if @form.save
+      # 在庫量を変化させる処理
+      ingredients_hash = get_amount_of_ingredients(@form.sales)
+      ingredients_hash.each do |key, value|
+        ingredient = Ingredient.find(key)
+        ingredient.stock -= value
+        # TODO エラーハンドリング
+        ingredient.save!
+      end
       redirect_to sales_path, notice: "売上を登録しました"
     else
       flash.now[:alert] = "登録に失敗しました"
       render new_sale_path
     end
-
   end
 
   def show; end
@@ -31,16 +38,32 @@ class SalesController < ApplicationController
   def edit; end
 
   def update
+    # 売上の変化に応じて在庫量を変化させる処理
+    before_quantity = @sale.quantity
     if @sale.update(sale_params)
       flash[:notice] = "売上情報を更新しました"
+      after_quantity = @sale.quantity
+      variation = after_quantity - before_quantity
+      @sale.menu.menu_ingredients.each do |menu_ingredient|
+        menu_ingredient.ingredient.stock += menu_ingredient.amount * variation
+        # TODO エラーハンドリング
+        menu_ingredient.ingredient.save!
+      end
       redirect_to @sale
     else
+      flash.now[:alert] = "更新に失敗しました"
       render 'edit'
     end
   end
 
   def destroy
     @sale.destroy!
+    # 売上の削除に応じて在庫量を変化させる
+    @sale.menu.menu_ingredients.each do |menu_ingredient|
+      menu_ingredient.ingredient.stock += menu_ingredient.amount * @sale.quantity
+      # TODO エラーハンドリング
+      menu_ingredient.ingredient.save!
+    end
     flash[:notice] = '売上情報を削除しました'
     redirect_to sales_path
   end
