@@ -8,18 +8,10 @@ ja:
   layouts:
     navigation:
       title: 'CROSSPOINT'
-      sales_dropdown: '売上'
-      sales: '売上一覧'
-      new_sale: '売上追加'
-      purchases_dropdown: '発注'
-      purchases: '発注一覧'
-      new_purchase: '発注情報追加'
-      menu_dropdown: 'メニュー'
-      menus: 'メニュー一覧'
-      new_menu: 'メニュー情報追加'
-      ingredients_dropdown: '在庫情報'
-      ingredients: '在庫一覧'
-      new_ingredient: '食材情報追加'
+      sales: '売上'
+      purchases: '発注'
+      menus: 'メニュー'
+      ingredients: '在庫'
       logout: 'ログアウト'
     before_login_navigation:
       title: 'CROSSPOINT'
@@ -74,7 +66,7 @@ ja:
       new_path: '[ 発注情報を追加 ]'
   sales:
     search_form:
-      search: '検索'
+      search: '日付を選択してください'
       date: '日付'
     edit:
       title: '売上情報編集'
@@ -84,6 +76,7 @@ ja:
       gross_profit: '粗利益'
       operating_income: '営業利益'
       per_menu: 'メニュー別売上' 
+      new_path: '売上情報入力ページへ'
     new:
       title: '売上情報追加'
     search:

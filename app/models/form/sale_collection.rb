@@ -1,10 +1,10 @@
 class Form::SaleCollection < Form::Base
-  FORM_COUNT = 8
   attr_accessor :sales
 
   def initialize(attributes = {})
+    form_count = Menu.count
     super attributes
-    self.sales = FORM_COUNT.times.map { Sale.new() } unless self.sales.present?  
+    self.sales = form_count.times.map { Sale.new() } unless self.sales.present?  
   end
 
   def sales_attributes=(attributes)

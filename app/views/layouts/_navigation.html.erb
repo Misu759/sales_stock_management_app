@@ -1,54 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <%= link_to t('.title'), root_path, class: "navbar-brand", id: "logo" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <%= t '.sales_dropdown'%>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to t('.sales'), sales_path, class: "dropdown-item" %>
-            <%= link_to t('.new_sale'), new_sale_path, class: "dropdown-item" %>
-          </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to t('.sales'), sales_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <%= t '.purchases_dropdown'%>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to t('.purchases'), purchases_path, class: "dropdown-item" %>
-            <%= link_to t('.new_purchase'), new_purchase_path, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to t('.purchases'), purchases_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <%= t '.menu_dropdown'%>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to t('.menus'), menus_path, class: 'dropdown-item'%>
-            <%= link_to t('.new_menu'), new_menu_path, class: 'dropdown-item'%>
-          </div>
+        <li class="nav-item">
+          <%= link_to t('.menus'), menus_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-            <%= t '.ingredients_dropdown' %>
-          </a>
-          <div class="dropdown-menu">
-            <%= link_to t('.ingredients'), ingredients_path, class: 'dropdown-item'%>
-            <%= link_to t('.new_ingredient'), new_ingredient_path, class: 'dropdown-item'%>
-          </div>
+        <li class="nav-item">
+          <%= link_to t('.ingredients'), ingredients_path, class: "nav-link" %>
         </li>
-        <li>
-          <div class="nav-item">
-            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
-          </div>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', logout_path, class: "nav-link", method: :delete %>
         </li>
       </ul>
     </div>
   </div>
-</nav>
+  </nav>

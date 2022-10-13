@@ -2,7 +2,7 @@
 <%= search_form_for @q, url: search_sales_path do |f| %>
   <div class="form_group row">
     <%= f.label :date_eq, t('.date'), class: 'col-1 col-form-label'%>
-    <%= f.date_field :date_eq, class:'form-control col-4' %>
+    <%= f.date_field :date_eq, class:'form-control col-2' %>
     <%= f.submit class: 'btn btn-outline-secondary'%>
   </div>
 <% end %>

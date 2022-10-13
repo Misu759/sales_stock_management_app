@@ -7,6 +7,8 @@ class SalesController < ApplicationController
   end
 
   def new
+    # 日付の入力を一つにまとめる
+    @form_date = Date.today
     @form = Form::SaleCollection.new
   end
 
@@ -62,7 +64,10 @@ class SalesController < ApplicationController
   end
 
   def sale_collection_params
-    params.require(:form_sale_collection).permit(sales_attributes: [:date, :menu_id, :quantity])
+    date = params[:form_sale_collection][:form_date]
+    forms = params.require(:form_sale_collection).permit(sales_attributes: [:menu_id, :quantity])
+    forms[:sales_attributes].each_value { |form| form[:date] = date }
+    forms
   end
 
   def total_sales(sales)

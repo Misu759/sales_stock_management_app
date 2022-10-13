@@ -1,4 +1,7 @@
 <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
+<div class="text-center col-9 mt-4">
+  <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>
+</div>
 
 <div class="mt-4 mb-4">
   <%= render 'search_form'%>
@@ -30,8 +33,4 @@
     </table>
     <%= paginate @ingredients %>
   </div>
-</div>
-
-<div class="text-center col-9 mt-4">
-  <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>
 </div>
