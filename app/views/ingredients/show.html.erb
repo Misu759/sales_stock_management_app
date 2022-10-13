@@ -5,7 +5,9 @@
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-body">
-          <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@ingredient.purchase_cost}" %></p>
+          <p><%= "#{Ingredient.human_attribute_name :purchase_cost} #{@ingredient.purchase_cost}" %></p>
+          <p><%= "#{Ingredient.human_attribute_name :unit_amount} : #{@ingredient.unit_amount}" %></p>
+          <p><%= "#{Ingredient.human_attribute_name :unit_cost} : #{@ingredient.decorate.unit_cost}" %></p>
           <p><%= "#{Ingredient.human_attribute_name :stock} : #{@ingredient.stock}" %></p>
 
           <%= link_to t('defaults.edit'), edit_ingredient_path(@ingredient), class: "btn btn-outline-info" %>

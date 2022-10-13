@@ -11,7 +11,7 @@ ja:
     attributes:
       menu:
         name: 'メニュー名'
-        regular_cost: '定価'
+        regular_cost: '定価(円)'
         description: '詳細'
         category: 'カテゴリー'
       sale:
@@ -19,7 +19,9 @@ ja:
         date: '日付'
       ingredient:
         name: '食材名'
-        purchase_cost: '単価'
+        purchase_cost: '値段'
+        unit_amount: '量（ml/ g/ 枚）'
+        unit_cost: '単価'
         stock: '在庫量'
       purchase:
         ingredient_name: '食材名'
@@ -41,6 +43,6 @@ ja:
   enums:
     menu:
       category:
-        food: 'フード'
-        sweets: 'スイーツ'
-        drink: 'ドリンク'
+        food: 'フードメニュー'
+        sweets: 'スイーツメニュー'
+        drink: 'ドリンクメニュー'

@@ -12,6 +12,13 @@
       </div>
 
       <div class="form-group row">
+        <%= f.label :unit_amount, class: "col-2 col-form-label text-light" %>
+        <div class="col-3">
+          <%= f.number_field :unit_amount, class: "form-control shadow rounded" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
         <%= f.label :purchase_cost, class: "col-2 col-form-label text-light" %>
         <div class="col-3">
           <%= f.number_field :purchase_cost, class: "form-control shadow rounded" %>
@@ -22,6 +29,13 @@
         <%= f.label :stock, class: "col-2 col-form-label text-light" %>
         <div class="col-3">
           <%= f.number_field :stock, class: "form-control shadow rounded" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :threshold, class: "col-2 col-form-label text-light" %>
+        <div class="col-3">
+          <%= f.number_field :threshold, class: "form-control shadow rounded" %>
         </div>
       </div>
 

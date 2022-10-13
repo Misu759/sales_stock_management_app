@@ -2,23 +2,53 @@
 
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-8 mt-4">
+    <div class="col-10 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
-        <div class="card-header font-italic">
+        <h3 class="card-header font-italic">
           <%= @menu.category_i18n %>
-        </div>
-        <div class="card-body">
-          <div class="card-text text-left"><%= simple_format(@menu.description) %></div>
-          <p><%= Ingredient.model_name.human %></p>
-          <% @menu_ingredients.each do |menu_ingredient| %>
-            <p><%= "#{menu_ingredient.ingredient.name} : #{menu_ingredient.amount} g " %></p>
-          <% end %>
+        </h3>
+        <div class="card-body text-left">
+          <h3>コスト</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th><%= Menu.human_attribute_name :regular_cost %></th>
+                <th><%= t '.cost_price' %></th>
+                <th><%= t '.cost_rate' %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><%= @menu.regular_cost %></th>
+                <th><%= @menu.decorate.cost_price %></th>
+                <th><%= @menu.decorate.cost_rate %></th>
+              </tr>
+            </tbody>
+          </table>
 
-          <p><%= "#{Menu.human_attribute_name :regular_cost} : #{@menu.regular_cost}円" %></p>
-          <p><%= "#{t '.cost_price'} : #{@menu.cost_price}円" %></p>
-          <p><%= "#{t '.cost_rate'} : #{(@menu.cost_price.to_f / @menu.regular_cost.to_f).truncate(2) * 100 }%" %></p>
-          <%= link_to t('defaults.edit'), edit_menu_path(@menu), class: "btn btn-outline-info" %>
-          <%= link_to t('defaults.delete'), menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+
+          <h3 class="mt-4">材料</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>食材名</th>
+                <th>分量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @menu_ingredients.each do |menu_ingredient| %>
+              <tr>
+                <th><%= menu_ingredient.ingredient.name %></th>
+                <th><%= menu_ingredient.amount %> ( g/ ml/ 枚 )</th>
+              </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+          <div class="text-center">
+            <%= link_to t('defaults.edit'), edit_menu_path(@menu), class: "btn btn-outline-info" %>
+            <%= link_to t('defaults.delete'), menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
         </div>
       </div>
       <div class="mb-3 text-center">

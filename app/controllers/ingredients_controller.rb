@@ -3,7 +3,8 @@ class IngredientsController < ApplicationController
   before_action :set_q, only: %i[index search]
 
   def index
-    @ingredients = Ingredient.page(params[:page])
+    @list = []
+    @ingredients = Ingredient.all
   end
 
   def new
@@ -45,7 +46,7 @@ class IngredientsController < ApplicationController
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :purchase_cost, :stock)
+    params.require(:ingredient).permit(:name, :purchase_cost, :stock, :unit_amount, :threshold)
   end
 
   def set_ingredient

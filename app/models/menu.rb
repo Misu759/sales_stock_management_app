@@ -5,10 +5,4 @@ class Menu < ApplicationRecord
   has_many :menu_ingredients
   has_many :ingredients, through: :menu_ingredients
 
-  def cost_price
-    cost = 0
-    menu_ingredients.each {|menu_ingredient| cost += menu_ingredient.ingredient.purchase_cost * menu_ingredient.amount}
-    cost
-  end
-
 end

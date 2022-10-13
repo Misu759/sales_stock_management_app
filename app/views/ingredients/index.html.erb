@@ -1,4 +1,20 @@
 <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
+<% @ingredients.each do |ingredient| %>
+  <% ingredient.decorate.alert_purchase(@list) %>
+<% end %>
+<% if !@list.empty? %>
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">発注が必要です</h4>
+    <% @list.each do |ingredient_name| %>
+      <p><%= ingredient_name %>の在庫量を確認してください</p>
+    <% end %>
+    <hr>
+    <p class="mb-0">管理しているデータと実際の在庫量に大きな違いがある場合は，使用量を確認する必要があります</p>
+  </div>
+<% end %>
+
+
+
 <div class="text-center col-9 mt-4">
   <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>
 </div>
@@ -21,7 +37,13 @@
         <% @ingredients.each do |ingredient| %>
           <tr>
             <th scope="row"><%= ingredient.name %></th>
-            <td><%= ingredient.stock %></td>
+            <td>
+              <% if ingredient.stock <= ingredient.threshold.to_i %>
+                <p class="text-danger"><%= ingredient.stock %></p>
+              <% else %>
+                <%= ingredient.stock %>
+              <% end %>
+            </td>
             <td>
               <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
               <%= link_to t('defaults.edit'), edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-success" %>
@@ -31,6 +53,5 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @ingredients %>
   </div>
 </div>
