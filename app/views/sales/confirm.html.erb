@@ -1,0 +1,71 @@
+<h1 class="mt-4 mb-4"><%= l @sales.first.date, format: :long %> 売上</h1>
+
+<% @ingredients.each do |ingredient| %>
+  <% ingredient.decorate.alert_purchase(@list) %>
+<% end %>
+<% if !@list.empty? %>
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">発注が必要です</h4>
+    <% @list.each do |ingredient_name| %>
+      <p><%= ingredient_name %>の在庫量を確認してください</p>
+    <% end %>
+    <hr>
+    <p class="mb-0">管理しているデータと実際の在庫量に大きな違いがある場合は，使用量を確認する必要があります</p>
+  </div>
+<% end %>
+
+<div class="col-9 mb-4">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col"><%= t '.total_sales' %></th>
+        <th scope="col"><%= t '.cost_of_sales' %></th>
+        <th scope="col"><%= t '.operating_income' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @total_sales %></td>
+        <td><%= @cost_of_sales %></td>
+        <td><%= @total_sales - @cost_of_sales %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2 class="mt-4 mb-4">食材使用量</h2>
+<div class="row">
+  <div class="col-9">  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">食材名</th>
+          <th scope="col">使用量</th>
+          <th scope="col">在庫</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <% if !@ingredients_hash[ingredient.id].nil? %>
+            <tr>
+              <th scope="row"><%= ingredient.name %></th>
+              <td><%= @ingredients_hash[ingredient.id] %></td>
+              <td>
+                <% if ingredient.stock <= ingredient.threshold.to_i %>
+                <p class="text-danger"><%= ingredient.stock %></p>
+                <% else %>
+                  <%= ingredient.stock %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <div class="mb-3 text-center">
+      <%= link_to t('defaults.back'), sales_path, class: "text-info" %>
+    </div>
+  </div>
+</div>

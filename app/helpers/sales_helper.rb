@@ -21,7 +21,7 @@ module SalesHelper
 
   def cost_of_sales(sales)
     total = 0
-    sales.each {|sale| total += sale.menu.cost_price * sale.quantity}
+    sales.each {|sale| total += sale.menu.decorate.cost_price * sale.quantity}
     total
   end
 

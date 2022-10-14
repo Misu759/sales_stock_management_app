@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :sales do
     collection do
       get 'search'
+      get 'confirm'
     end
   end
   resources :ingredients do

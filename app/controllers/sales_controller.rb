@@ -26,7 +26,7 @@ class SalesController < ApplicationController
         # TODO エラーハンドリング
         ingredient.save!
       end
-      redirect_to sales_path, notice: "売上を登録しました"
+      redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
     else
       flash.now[:alert] = "登録に失敗しました"
       render new_sale_path
@@ -74,6 +74,15 @@ class SalesController < ApplicationController
     @ingredients_hash = get_amount_of_ingredients(@results)
     @total_sales = total_sales(@results)
     @cost_of_sales = cost_of_sales(@results)
+  end
+
+  def confirm
+    @sales = Sale.where(date: params[:date])
+    @list = []
+    @ingredients = Ingredient.all
+    @ingredients_hash = get_amount_of_ingredients(@sales)
+    @total_sales = total_sales(@sales)
+    @cost_of_sales = cost_of_sales(@sales)
   end
 
   private

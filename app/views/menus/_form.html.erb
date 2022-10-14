@@ -18,13 +18,6 @@
         </div>
 
         <div class="form-group row">
-          <%= f.label :description, class: "col-2 col-form-label text-light" %>
-          <div class="col-10"> 
-            <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: true %>
-          </div>
-        </div>
-
-        <div class="form-group row">
           <%= f.label :category, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
             <%= f.select :category, Menu.categories_i18n.invert.to_a, {}, { class: 'form-control shadow rounded'}%>
