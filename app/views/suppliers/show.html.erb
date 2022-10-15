@@ -1,0 +1,27 @@
+<h1 class="mt-4 mb-4">仕入れ先詳細</h1>
+
+
+<h2 class="text-center mt-4"><%= @supplier.name %></h2>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-body">
+          <div class="card-text text-center">
+            <p><%= "連絡先 : #{@supplier.phone_number}" %></p>
+            <p><%= "配送料 : #{@supplier.delivery_cost}" %></p>
+          </div>
+          <%= link_to t('defaults.edit'), edit_supplier_path(@supplier), class: "btn btn-outline-info" %>
+          <%= link_to t('defaults.delete'), supplier_path(@supplier), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+      </div>
+      <div class="mb-3 text-center">
+        <p><%= link_to "続けて登録する", new_supplier_path, class: "btn btn-lg btn-outline-secondary" %></p>
+        <p><%= link_to "食材情報の登録へ", new_ingredient_path, class: "btn btn-lg btn-outline-secondary" %></p>
+
+        <%= link_to t('defaults.back'), suppliers_path, class: "text-info" %>
+      </div>
+    </div>
+  </div>
+</div>

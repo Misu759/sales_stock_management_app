@@ -1,0 +1,36 @@
+<h2 class="mt-4 mb-3 text-center">仕入れ先情報</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="text-center mb-6">
+        <%= link_to '新規登録', new_supplier_path, class: "btn btn-lg btn-outline-secondary" %>
+      </div>
+      <br>
+
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th scope="col">仕入れ先</th>
+            <th scope="col">電話番号</th>
+            <th scope="col">配送費</th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @suppliers.each do |supplier| %>
+            <tr>
+              <th scope="row"><%= supplier.name %></th>
+              <td><%= supplier.phone_number %></td>
+              <td><%= supplier.delivery_cost %></td>
+              <td>
+                <%= link_to t('defaults.edit'), edit_supplier_path(supplier), class: "btn btn-sm btn-outline-success" %>
+                <%= link_to t('defaults.delete'), supplier_path(supplier), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
