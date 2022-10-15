@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_14_033152) do
+ActiveRecord::Schema.define(version: 2022_10_15_055028) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name", null: false
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2022_10_14_033152) do
     t.integer "stock", default: 0, null: false
     t.integer "threshold"
     t.integer "unit_amount", null: false
+    t.integer "supplier_id", null: false
     t.index ["name"], name: "index_ingredients_on_name", unique: true
+    t.index ["supplier_id"], name: "index_ingredients_on_supplier_id"
   end
 
   create_table "menu_ingredients", force: :cascade do |t|
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_10_14_033152) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "amount"
     t.index ["ingredient_id"], name: "index_menu_ingredients_on_ingredient_id"
+    t.index ["menu_id", "ingredient_id"], name: "index_menu_ingredients_on_menu_id_and_ingredient_id", unique: true
     t.index ["menu_id"], name: "index_menu_ingredients_on_menu_id"
   end
 
@@ -61,6 +64,14 @@ ActiveRecord::Schema.define(version: 2022_10_14_033152) do
     t.date "date", null: false
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "delivery_cost", default: 0, null: false
+    t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -81,6 +92,7 @@ ActiveRecord::Schema.define(version: 2022_10_14_033152) do
     t.index ["ingredient_id"], name: "index_wastes_on_ingredient_id"
   end
 
+  add_foreign_key "ingredients", "suppliers"
   add_foreign_key "menu_ingredients", "ingredients"
   add_foreign_key "menu_ingredients", "menus"
   add_foreign_key "wastes", "ingredients"

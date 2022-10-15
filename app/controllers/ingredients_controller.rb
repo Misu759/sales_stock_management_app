@@ -46,7 +46,7 @@ class IngredientsController < ApplicationController
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :purchase_cost, :stock, :unit_amount, :threshold)
+    params.require(:ingredient).permit(:name, :purchase_cost, :stock, :unit_amount, :threshold, :supplier_id)
   end
 
   def set_ingredient

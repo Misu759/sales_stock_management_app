@@ -6,6 +6,6 @@ class IngredientDecorator < ApplicationDecorator
   end
 
   def alert_purchase(list)
-    list << name if stock <= threshold
+    list << name if stock <= threshold.to_i
   end
 end

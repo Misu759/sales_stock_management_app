@@ -7,13 +7,14 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
+    @ingredient_number
   end
 
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
       flash[:notice] = "メニュー情報を追加しました"
-      redirect_to @menu
+      redirect_to new_menu_ingredient_path(@menu, ingredient_number: params[:menu][:ingredient_number])
     else
       flash.now[:danger] = "もう一度やり直してください"
       render 'new'
@@ -41,7 +42,6 @@ class MenusController < ApplicationController
     flash[:notice] = "#{@menu.name}を削除しました"
     redirect_to menus_path
   end
-  
 end
 
 private

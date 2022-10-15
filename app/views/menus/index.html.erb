@@ -16,7 +16,6 @@
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= menu.regular_cost %></h5>
-            <p class="card-text"><%= truncate(menu.description, length: 100) %></p>
             <%= link_to t('defaults.show'), menu_path(menu), class: "btn btn-outline-success" %>
             <%= link_to t('defaults.edit'), edit_menu_path(menu), class: "btn btn-outline-info" %>
             <%= link_to t('defaults.delete'), menu_path(menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>

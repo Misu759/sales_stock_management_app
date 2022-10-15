@@ -14,14 +14,14 @@
       <div class="form-group row">
         <%= f.label :unit_amount, class: "col-2 col-form-label text-light" %>
         <div class="col-3">
-          <%= f.number_field :unit_amount, class: "form-control shadow rounded" %>
+          <%= f.number_field :unit_amount, class: "form-control shadow rounded", placeholder: "購入単位の量" %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :purchase_cost, class: "col-2 col-form-label text-light" %>
         <div class="col-3">
-          <%= f.number_field :purchase_cost, class: "form-control shadow rounded" %>
+          <%= f.number_field :purchase_cost, class: "form-control shadow rounded", placeholder: "値段" %>
         </div>
       </div>
 
@@ -36,6 +36,13 @@
         <%= f.label :threshold, class: "col-2 col-form-label text-light" %>
         <div class="col-3">
           <%= f.number_field :threshold, class: "form-control shadow rounded" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :supplier, class: "col-2 col-form-label text-light" %>
+        <div class="col-10">
+          <%= f.collection_select :supplier_id, Supplier.all, :id, :name, { prompt: t('defaults.prompt') }, class: "form-control shadow rounded" %>
         </div>
       </div>
 

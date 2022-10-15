@@ -1,4 +1,10 @@
 <h2 class="text-center mt-4 font-italic text-weight-border"><%= @menu.name %></h2>
+<div class="text-center mt-4">
+  <%= link_to '定価/カテゴリーの編集', edit_menu_path(@menu), class: "btn btn-outline-info" %>
+</div>
+<div class="text-center mt-2">
+  <%= link_to 'メニュー情報を削除', menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
 
 <div class="container">
   <div class="row justify-content-md-center">
@@ -26,13 +32,15 @@
             </tbody>
           </table>
 
-
           <h3 class="mt-4">材料</h3>
-          <table class="table table-bordered">
+          <%= link_to '材料を追加する', new_menu_ingredient_path(@menu), class: "btn btn-outline-info" %>
+
+          <table class="table table-bordered mt-4">
             <thead>
               <tr>
                 <th>食材名</th>
                 <th>分量</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -40,15 +48,15 @@
               <tr>
                 <th><%= menu_ingredient.ingredient.name %></th>
                 <th><%= menu_ingredient.amount %> ( g/ ml/ 枚 )</th>
+                <th>
+                  <%= link_to '編集', edit_menu_ingredient_path(@menu, menu_ingredient), class: "btn btn-outline-info" %>
+                  <%= link_to '削除', menu_ingredient_path(@menu, menu_ingredient), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                </th>
               </tr>
               <% end %>
 
             </tbody>
           </table>
-          <div class="text-center">
-            <%= link_to t('defaults.edit'), edit_menu_path(@menu), class: "btn btn-outline-info" %>
-            <%= link_to t('defaults.delete'), menu_path(@menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-          </div>
         </div>
       </div>
       <div class="mb-3 text-center">

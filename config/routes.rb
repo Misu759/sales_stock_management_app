@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resources :users, only: %i[new create]
-  resources :menus
+  resources :menus do
+    resources :menu_ingredients, as: :ingredients, only: %i[new create edit update destroy]
+  end
   resources :sales do
     collection do
       get 'search'
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
   end
   resources :purchases
   resources :wastes, except: %i[show]
+  resources :suppliers
 end
