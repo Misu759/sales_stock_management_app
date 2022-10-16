@@ -15,11 +15,16 @@
     <% else %>
       <%= render 'layouts/before_login_navigation' %>
     <% end %>
-    <div id="page-content">
-      <div class="container">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
+    <div id="layoutSidenav">
+      <%= render 'layouts/sidebar' %>
+      <div id="layoutSidenav_content">
+          <main>
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </main>
+          <%= render 'layouts/footer' %>
       </div>
     </div>
+
   </body>
 </html>

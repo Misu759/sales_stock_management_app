@@ -1,43 +1,9 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.navbar {
-  background-color: #6c6761 !important;
-}
-
-.bg-info {
-  background-color: #b0a69b !important;
-}
-
-#logo {
-  float: left;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-}
-
-.jumbotron {
-  color: #fff;
-  background-color: #bab3ad;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#top-jumb {
-  color: #fff;
-  background-image: asset-url('jumbo-back.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 500px;
-}
 
 html,
 body {
   height: 100%;
-  background-color: #dbd3ca;
 }
 
 #page-content {
@@ -55,7 +21,6 @@ body {
 
 .pagination > li > a {
   border-color: #bab3ad;
-  background-color: #dbd3ca;
   color: brown;
 }
 
@@ -65,7 +30,6 @@ body {
 .pagination > li > span:hover
 {
   color: brown;
-  background-color: #eee;
   border-color: #ddd;
 }
 

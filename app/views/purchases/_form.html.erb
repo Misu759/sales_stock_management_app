@@ -2,37 +2,37 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <%= render 'shared/errors', obj: @purchase %>
-      <%= form_with(model: @purchase, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+      <%= form_with(model: @purchase, class: "p-3 mb-3 rounded", local: true) do |f| %>
         <div class="form-group row">
-          <%= f.label :name, class: "col-2 col-form-label text-light" %>
+          <%= f.label :name, class: "col-2 col-form-label" %>
           <div class="col-10">
             <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: t('defaults.prompt') }, class: "form-control shadow rounded" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :amount, class: "col-2 col-form-label text-light" %>
+          <%= f.label :amount, class: "col-2 col-form-label" %>
           <div class="col-10">
             <%= f.number_field :amount, class: "form-control shadow rounded", placeholder: true %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :purchase_date, class: "col-2 col-form-label text-light" %>
+          <%= f.label :purchase_date, class: "col-2 col-form-label" %>
           <div class="col-10">
             <%= f.date_field :purchase_date, class: "form-control shadow rounded", value: Date.today %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :waste_date, class: "col-2 col-form-label text-light" %>
+          <%= f.label :waste_date, class: "col-2 col-form-label" %>
           <div class="col-10">
             <%= f.date_field :waste_date, class: "form-control shadow rounded" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :delivery_cost, class: "col-2 col-form-label text-light" %>
+          <%= f.label :delivery_cost, class: "col-2 col-form-label" %>
           <div class="col-10">
             <%= f.number_field :delivery_cost, class: "form-control shadow rounded", placeholder: true %>
           </div>

@@ -1,0 +1,37 @@
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+      <div class="sb-sidenav-menu">
+          <div class="nav">
+              <div class="sb-sidenav-menu-heading">Top page</div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to "ダッシュボード", root_path, class: "nav-link" %>
+              </div>
+              <div class="sb-sidenav-menu-heading">各データ</div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to t('.sales'), sales_path, class: "nav-link" %>
+              </div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to t('.purchases'), purchases_path, class: "nav-link" %>
+              </div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to t('.menus'), menus_path, class: "nav-link" %>
+              </div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to t('.ingredients'), ingredients_path, class: "nav-link" %>
+              </div>
+              <div>
+                <!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
+                <%= link_to "仕入れ先情報", suppliers_path, class: "nav-link" %>
+              </div>
+          </div>
+      </div>
+      <div class="sb-sidenav-footer">
+          <%= current_user.last_name %>でログイン中です
+      </div>
+  </nav>
+</div>

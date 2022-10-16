@@ -1,33 +1,35 @@
-<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
+<div class="container-fluid px-4">
+  <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
-<div class="text-center col-9 mb-4">
-  <%= link_to t('.new_path'), new_waste_path, class: "btn btn-lg btn-outline-secondary" %>
-</div>
-
-<div class="row">
-  <div class="col-9"> 
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th scope="col"><%= Waste.human_attribute_name :ingredient_name %></th>
-          <th scope="col"><%= Waste.human_attribute_name :amount %></th>
-          <th scope="col"><%= Waste.human_attribute_name :date %></th>
-          <th scope="col"> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @wastes.each do |waste| %>
+  <div class="text-center col-9 mb-4">
+    <%= link_to t('.new_path'), new_waste_path, class: "btn btn-lg btn-outline-secondary" %>
+  </div>
+  
+  <div class="row">
+    <div class="col-9"> 
+      <table class="table table-bordered table-hover">
+        <thead>
           <tr>
-            <th scope="row"><%= waste.ingredient.name %></th>
-            <td><%= waste.amount %></td>
-            <td><%= waste.date %></td>
-            <td>
-              <%= link_to t('defaults.edit'), edit_waste_path(waste), class: "btn btn-sm btn-outline-success" %>
-              <%= link_to t('defaults.delete'), waste_path(waste), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-            </td>
+            <th scope="col"><%= Waste.human_attribute_name :ingredient_name %></th>
+            <th scope="col"><%= Waste.human_attribute_name :amount %></th>
+            <th scope="col"><%= Waste.human_attribute_name :date %></th>
+            <th scope="col"> </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @wastes.each do |waste| %>
+            <tr>
+              <th scope="row"><%= waste.ingredient.name %></th>
+              <td><%= waste.amount %></td>
+              <td><%= waste.date %></td>
+              <td>
+                <%= link_to t('defaults.edit'), edit_waste_path(waste), class: "btn btn-sm btn-outline-success" %>
+                <%= link_to t('defaults.delete'), waste_path(waste), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

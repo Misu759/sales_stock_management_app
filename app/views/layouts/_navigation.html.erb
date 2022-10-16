@@ -1,30 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <%= link_to t('.title'), root_path, class: "navbar-brand", id: "logo" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to t('.sales'), sales_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t('.purchases'), purchases_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t('.menus'), menus_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t('.ingredients'), ingredients_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "仕入れ先情報", suppliers_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ログアウト', logout_path, class: "nav-link", method: :delete %>
-        </li>
-      </ul>
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <%= link_to t('.title'), root_path, class: "navbar-brand ps-3", id: "logo" %>
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      ユーザーアイコン
+    </a>
+  
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <%= link_to 'ログアウト', logout_path, class: "dropdown-item", method: :delete %>
     </div>
   </div>
-  </nav>
+</div>
+</nav>

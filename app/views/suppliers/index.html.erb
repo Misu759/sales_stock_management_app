@@ -1,13 +1,22 @@
-<h2 class="mt-4 mb-3 text-center">仕入れ先情報</h2>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-10">
-      <div class="text-center mb-6">
-        <%= link_to '新規登録', new_supplier_path, class: "btn btn-lg btn-outline-secondary" %>
-      </div>
-      <br>
+<div class="container-fluid px-4">
+  <h1 class="mt-4">仕入れ先情報</h1>
 
-      <table class="table table-bordered mt-4">
+  <div class="card mb-4">
+    <div class="card-body">
+        Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+        <div class="text-center">
+          <%= link_to '新規登録', new_supplier_path, class: "btn btn-lg btn-outline-secondary" %>
+        </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+        <!-- <i class="fas fa-table me-1"></i> -->
+        仕入れ先 一覧
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered" id="datatablesSimple">
         <thead>
           <tr>
             <th scope="col">仕入れ先</th>

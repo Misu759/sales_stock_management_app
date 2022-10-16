@@ -1,29 +1,47 @@
-<h1 class="text-center mt-4 font-italic"><%= t '.title'%></h1>
+<div class="container-fluid px-4">
+  <h1 class="mt-4"><%= t '.title'%></h1>
 
-<div class="text-center mt-4">
-  <%= link_to t('.new_path'), new_menu_path, class: "btn btn-lg btn-outline-secondary" %>
-</div>
-
-<div class="container mt-4">
-  <%= paginate @menus %>
-
-  <% @menus.each do |menu| %>
-    <div class="row justify-content-md-center">
-      <div class="col-8 mt-4">
-        <div class="card text-center shadow mb-5 bg-white rounded">
-          <div class="card-header font-italic font-weight-bold">
-            <%= link_to menu.name, menu_path(menu), class: "text-success" %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= menu.regular_cost %></h5>
-            <%= link_to t('defaults.show'), menu_path(menu), class: "btn btn-outline-success" %>
-            <%= link_to t('defaults.edit'), edit_menu_path(menu), class: "btn btn-outline-info" %>
-            <%= link_to t('defaults.delete'), menu_path(menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-          </div>
+  <div class="card mb-4">
+    <div class="card-body">
+        Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+        <div class="text-center">
+          <%= link_to t('.new_path'), new_menu_path, class: "btn btn-lg btn-outline-secondary" %>
         </div>
-      </div>
     </div>
-  <% end %>
-  
-  <%= paginate @menus %>
+  </div>
+
+
+  <div class="card mb-4">
+    <div class="card-header">
+        <!-- <i class="fas fa-table me-1"></i> -->
+        メニュー一覧
+    </div>
+    <div class="card-body">
+      <div class="float-right">
+        <%= paginate @menus %>
+      </div>
+      <table class="table table-bordered" id="datatablesSimple">
+        <thead>
+          <tr>
+            <th>メニュー名</th>
+            <th>定価</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @menus.each do |menu| %>
+          <tr>
+            <td><%= menu.name %></td>
+            <td><%= menu.regular_cost %></td>
+            <td>
+              <%= link_to t('defaults.show'), menu_path(menu), class: "btn btn-outline-success" %>
+              <%= link_to t('defaults.edit'), edit_menu_path(menu), class: "btn btn-outline-info" %>
+              <%= link_to t('defaults.delete'), menu_path(menu), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

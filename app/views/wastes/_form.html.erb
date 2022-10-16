@@ -2,30 +2,30 @@
   <div class="row justify-content-center">
     <div class="col-10">
       <%= render 'shared/errors', obj: @waste %>
-      <%= form_with(model: @waste, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+      <%= form_with(model: @waste, class: "p-3 mb-3 rounded", local: true) do |f| %>
         <div class="form-group row">
-          <%= f.label :name, class: "col-2 col-form-label text-light" %>
+          <%= f.label :name, class: "col-2 col-form-label" %>
           <div class="col-10">
-            <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: true }, class: "form-control shadow rounded" %>
+            <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: true }, class: "form-control rounded" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :amount, class: "col-2 col-form-label text-light" %>
+          <%= f.label :amount, class: "col-2 col-form-label" %>
           <div class="col-10">
-            <%= f.number_field :amount, class: "form-control shadow rounded", placeholder: (Waste.human_attribute_name :amount) %>
+            <%= f.number_field :amount, class: "form-control rounded", placeholder: (Waste.human_attribute_name :amount) %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :date, class: "col-2 col-form-label text-light" %>
-          <div class="col-10">
-            <%= f.date_field :date, class: "form-control shadow rounded", value: Date.today %>
+          <%= f.label :date, class: "col-2 col-form-label" %>
+          <div class="col-4">
+            <%= f.date_field :date, class: "form-control rounded", value: Date.today %>
           </div>
         </div>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+          <%= f.submit class: "btn btn-outline-dark" %>
         </div>
       <% end %>
       <div class="mb-3 text-center">

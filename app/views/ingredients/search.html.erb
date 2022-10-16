@@ -1,38 +1,45 @@
-<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
+<div class="container-fluid px-4">
+  <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
-<div class="mt-4 mb-4">
-  <%= render 'search_form'%>
-</div>
-
-<div class="row">
-  <div class="col-9">  
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th scope="col"><%= Ingredient.human_attribute_name :name %></th>
-          <th scope="col"><%= Ingredient.human_attribute_name :stock %></th>
-          <th scope="col"> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @results.each do |ingredient| %>
-          <tr>
-            <th scope="row"><%= ingredient.name %></th>
-            <!-- TODO(繰り越し在庫量，営業日在庫量の計算) -->
-            <td><%= ingredient.stock %></td>
-            <td>
-              <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
-              <%= link_to t('defaults.edit'), edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-success" %>
-              <%= link_to t('defaults.delete'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="card mb-4">
+    <div class="card-body">
+        Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+        <div class="mt-4 mb-4">
+          <%= render 'search_form' %>
+        </div>
+    </div>
   </div>
-</div>
 
+  <div class="card mb-4">
+    <div class="card-header">
+        <!-- <i class="fas fa-table me-1"></i> -->
+        メニュー一覧
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered" id="datatablesSimple">
+        <thead>
+          <tr>
+            <th scope="col"><%= Ingredient.human_attribute_name :name %></th>
+            <th scope="col"><%= Ingredient.human_attribute_name :stock %></th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |ingredient| %>
+            <tr>
+              <th scope="row"><%= ingredient.name %></th>
+              <!-- TODO(繰り越し在庫量，営業日在庫量の計算) -->
+              <td><%= ingredient.stock %></td>
+              <td>
+                <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to t('defaults.edit'), edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-success" %>
+                <%= link_to t('defaults.delete'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<div class="text-center col-9 mt-4">
-  <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>
 </div>
