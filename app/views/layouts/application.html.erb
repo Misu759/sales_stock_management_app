@@ -16,13 +16,15 @@
       <%= render 'layouts/before_login_navigation' %>
     <% end %>
     <div id="layoutSidenav">
-      <%= render 'layouts/sidebar' %>
+      <% if logged_in? %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
       <div id="layoutSidenav_content">
-          <main>
-            <%= render 'layouts/messages' %>
-            <%= yield %>
-          </main>
-          <%= render 'layouts/footer' %>
+        <main>
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </main>
+        <%= render 'layouts/footer' %>
       </div>
     </div>
 
