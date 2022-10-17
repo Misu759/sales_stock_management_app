@@ -19,7 +19,12 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :purchases
+  resources :purchases do
+    collection do
+      get 'arrival_check'
+      get 'confirm'
+    end
+  end
   resources :wastes, except: %i[show]
   resources :suppliers
 end

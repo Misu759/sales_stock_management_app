@@ -15,8 +15,7 @@
             <p><%= "#{Purchase.human_attribute_name :amount} : #{@purchase.amount}" %></p>
             <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@purchase.ingredient.purchase_cost * @purchase.amount}円" %></p>
             <p><%= "#{Purchase.human_attribute_name :waste_date} : #{@purchase.waste_date}" %></p>
-            <p><%= "#{Purchase.human_attribute_name :delivery_cost} : #{@purchase.delivery_cost}"%></p>
-            <p><%= "担当者 :" %></p>
+            <p>担当者 :</p>
           </div>
           <%= link_to t('defaults.edit'), edit_purchase_path(@purchase), class: "btn btn-outline-info" %>
           <%= link_to t('defaults.delete'), purchase_path(@purchase), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>

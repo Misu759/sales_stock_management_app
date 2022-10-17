@@ -40,6 +40,24 @@ class PurchasesController < ApplicationController
     redirect_to purchases_path
   end
 
+  def arrival_check
+    purchase = Purchase.find(params[:purchase_id])
+    if purchase.arrival_check
+      purchase.update(arrival_check: false)
+      purchase.ingredient.stock -= purchase.amount
+      purchase.ingredient.save!
+    else
+      purchase.update(arrival_check: true)
+      purchase.ingredient.stock += purchase.amount
+      purchase.ingredient.save!
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def confirm
+    @purchases = Purchase.where("arrival_check = ? and arrival_date >= ? ", false, Date.today).includes(:ingredient)
+  end
+
   private
 
   def set_purchase
@@ -47,7 +65,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:ingredient_id, :amount, :purchase_date, :waste_date, :delivery_cost)
+    params.require(:purchase).permit(:ingredient_id, :amount, :purchase_date, :waste_date, :unused_amount, :arrival_date)
   end
 
   def purchase_cost_per_date

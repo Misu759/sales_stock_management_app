@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_15_055028) do
+ActiveRecord::Schema.define(version: 2022_10_17_060530) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name", null: false
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 2022_10_15_055028) do
     t.integer "amount", null: false
     t.date "purchase_date", null: false
     t.date "waste_date"
-    t.integer "delivery_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "unused_amount"
+    t.date "arrival_date"
+    t.boolean "arrival_check", default: false, null: false
     t.index ["ingredient_id"], name: "index_purchases_on_ingredient_id"
   end
 

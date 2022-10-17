@@ -37,8 +37,9 @@
                 <th scope="col"><%= Purchase.human_attribute_name :ingredient_name %></th>
                 <th scope="col"><%= Purchase.human_attribute_name :purchase_date %></th>
                 <th scope="col"><%= Purchase.human_attribute_name :amount %></th>
-                <th scope="col"><%= Purchase.human_attribute_name :waste_date %></th>
+                <th scope="col">到着予定日</th>
                 <th scope="col"><%= Purchase.human_attribute_name :purchase_cost%></th>
+                <th scope="col">到着状況</th>
                 <th scope="col"> </th>
               </tr>
             </thead>
@@ -48,8 +49,15 @@
                   <th scope="row"><%= purchase.ingredient.name %></th>
                   <td><%= l purchase.purchase_date, format: :short %></td>
                   <td><%= purchase.amount %></td>
-                  <td><%= purchase.waste_date %></td>
-                  <td><%= purchase.ingredient.purchase_cost * purchase.amount + purchase.delivery_cost %></td>
+                  <td><%= purchase.arrival_date %></td>
+                  <td><%= purchase.ingredient.purchase_cost * purchase.amount %></td>
+                  <td>
+                    <% if purchase.arrival_check %>
+                      <%= link_to '到着済み', arrival_check_purchases_path(purchase_id: purchase), data: {confirm: "未到着に戻すと在庫の情報が更新されるため，在庫情報の確認をしてください."} %>
+                    <% else %>
+                      <%= link_to '未到着', arrival_check_purchases_path(purchase_id: purchase), data: {confirm: "到着済みにすると在庫の情報が更新されます."} %>
+                    <% end %>
+                  </td>
                   <td><%= link_to t('defaults.show'), purchase_path(purchase), class: "btn btn-sm btn-outline-success" %></td>
                 </tr>
               <% end %>
