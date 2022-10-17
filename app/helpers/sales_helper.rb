@@ -6,7 +6,11 @@ module SalesHelper
       # 売上の個数がnilでない場合のみ
       if sale.quantity
         sale.menu.menu_ingredients.each do |menu_ingredient|
-          ingredients_hash[menu_ingredient.ingredient.id] = menu_ingredient.amount * sale.quantity
+          if ingredients_hash[menu_ingredient.ingredient.id]
+            ingredients_hash[menu_ingredient.ingredient.id] += menu_ingredient.amount * sale.quantity
+          else
+            ingredients_hash[menu_ingredient.ingredient.id] = menu_ingredient.amount * sale.quantity
+          end
         end
       end
     end

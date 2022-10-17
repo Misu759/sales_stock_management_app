@@ -25,6 +25,11 @@ class SalesController < ApplicationController
         ingredient.stock -= value
         # TODO エラーハンドリング
         ingredient.save!
+
+        # 発注した順番に食材を使用していく → 廃棄期限迫っている食材を警告するため
+        purchase = ingredient.purchases.where("unused_amount > 0").first
+        purchase.unused_amount -= value
+        purchase.decorate.update_amount_to_purchase(value)
       end
       redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
     else
@@ -48,6 +53,7 @@ class SalesController < ApplicationController
         menu_ingredient.ingredient.stock += menu_ingredient.amount * variation
         # TODO エラーハンドリング
         menu_ingredient.ingredient.save!
+        # TODO 売上情報の更新に対して発注単位の情報の更新
       end
       redirect_to @sale
     else
@@ -77,7 +83,7 @@ class SalesController < ApplicationController
   end
 
   def confirm
-    @sales = Sale.where(date: params[:date])
+    @sales = Sale.where(date: params[:date]).includes(menu: :ingredients)
     @list = []
     @ingredients = Ingredient.all
     @ingredients_hash = get_amount_of_ingredients(@sales)
