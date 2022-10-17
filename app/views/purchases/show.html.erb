@@ -15,6 +15,9 @@
             <p><%= "#{Purchase.human_attribute_name :amount} : #{@purchase.amount}" %></p>
             <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@purchase.ingredient.purchase_cost * @purchase.amount}円" %></p>
             <p><%= "#{Purchase.human_attribute_name :waste_date} : #{@purchase.waste_date}" %></p>
+            <p><%= "未使用量 : #{@purchase.unused_amount}" %></p>
+            <p><%= "到着予定日 : #{@purchase.arrival_date}" %></p>
+
             <p>担当者 :</p>
           </div>
           <%= link_to t('defaults.edit'), edit_purchase_path(@purchase), class: "btn btn-outline-info" %>
