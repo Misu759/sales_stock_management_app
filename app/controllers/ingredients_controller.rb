@@ -3,8 +3,11 @@ class IngredientsController < ApplicationController
   before_action :set_q, only: %i[index search]
 
   def index
-    @list = []
     @ingredients = Ingredient.all
+    @alert_ingredient_name_list = []
+    @ingredients.each do |ingredient|
+      ingredient.decorate.alert_purchase(@alert_ingredient_name_list)
+    end
   end
 
   def new

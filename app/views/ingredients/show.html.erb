@@ -10,6 +10,7 @@
           <p><%= "#{Ingredient.human_attribute_name :unit_cost} : #{@ingredient.decorate.unit_cost}" %></p>
           <p><%= "#{Ingredient.human_attribute_name :stock} : #{@ingredient.stock}" %></p>
           <p><%= "仕入れ先 : #{@ingredient.supplier.name}" %></p>
+          <p><%= "閾値 : #{@ingredient.threshold}" %></p>
 
           <%= link_to t('defaults.edit'), edit_ingredient_path(@ingredient), class: "btn btn-outline-info" %>
           <%= link_to t('defaults.delete'), ingredient_path(@ingredient), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>

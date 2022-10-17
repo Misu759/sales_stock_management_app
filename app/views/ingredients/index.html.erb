@@ -1,13 +1,10 @@
 <div class="container-fluid px-4">
   <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
-  <% @ingredients.each do |ingredient| %>
-    <% ingredient.decorate.alert_purchase(@list) %>
-  <% end %>
-  <% if !@list.empty? %>
+  <% if !@alert_ingredient_name_list.empty? %>
     <div class="alert alert-danger">
       <h4 class="alert-heading">発注が必要です</h4>
-      <% @list.each do |ingredient_name| %>
+      <% @alert_ingredient_name_list.each do |ingredient_name| %>
         <p><%= ingredient_name %>の在庫量を確認してください</p>
       <% end %>
       <hr>
