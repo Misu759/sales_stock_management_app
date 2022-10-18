@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: %i[show edit update destroy]
+  before_action :set_q, only: %i[index search]
 
   def index
     @purchases = Purchase.all.includes(:ingredient).page(params[:page])
@@ -58,6 +59,11 @@ class PurchasesController < ApplicationController
     @purchases = Purchase.where("arrival_check = ? and arrival_date >= ? ", false, Date.today).includes(:ingredient)
   end
 
+  def search
+    @purchases = @q.result
+    @purchase_graph_data = purchase_cost_per_date
+  end
+
   private
 
   def set_purchase
@@ -69,12 +75,16 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_cost_per_date
-    cost_per_date_columns = Purchase.joins(:ingredient).select(:purchase_date, "SUM(amount * purchase_cost) AS total").group(:purchase_date)
+    cost_per_date_columns = @purchases.joins(:ingredient).select(:purchase_date, "SUM(amount * purchase_cost) AS total").group(:purchase_date)
     graph_data = []
     cost_per_date_columns.each do |cost_per_date_column|
       graph_data.append([cost_per_date_column.purchase_date, cost_per_date_column.total])
     end
     graph_data
+  end
+
+  def set_q
+    @q = Purchase.ransack(params[:q])
   end
 
 end

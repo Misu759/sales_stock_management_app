@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get 'arrival_check'
       get 'confirm'
+      get 'search'
     end
   end
   resources :wastes, except: %i[show]

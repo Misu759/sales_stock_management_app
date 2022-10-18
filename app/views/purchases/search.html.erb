@@ -1,45 +1,27 @@
 <div class="container">
   <div class="container-fluid px-4">
-    <h1 class="mt-4 mb-4"><%= t '.title' %></h1>
-
-    <div class="card mb-4">
-      <div class="card-body">
-          Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-          <div class="text-center">
-            <%= link_to "発注情報追加", new_purchase_path, class: "btn btn-lg btn-outline-secondary" %>
-          </div>
+    <h1 class="mt-4 mb-4">メニューごとの発注情報</h1>
+    <% if !@purchases.exists? %>
+      <p class="mt-4"><%= t '.not_found' %></p>
+    <% else %>
+      <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-chart-area me-1"></i>
+            発注情報
+        </div>
+        <div class="mt-4">
+          <%= line_chart @purchase_graph_data %>
+        </div>
+        <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+        <div class="card-footer small text-muted">最終更新日： hoge </div>
       </div>
-    </div>
 
-    <div class="card mb-4">
-      <div class="card-body">
-          Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-          <div class="mt-4 mb-4">
-            <%= render 'search_form' %>
-          </div>
-      </div>
-    </div>
-
-    <div class="card mb-4">
-      <div class="card-header">
-          <i class="fas fa-chart-area me-1"></i>
-          発注情報
-      </div>
-      <div class="mt-4">
-        <%= line_chart @purchase_graph_data %>
-      </div>
-      <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-      <div class="card-footer small text-muted">最終更新日： hoge </div>
-    </div>
-
-    <h3 class="mt-4"><%= t '.summary' %></h3>
-
-    <div class="card mb-4">
-      <div class="card-header">
-          <i class="fas fa-table me-1"></i>
-          DataTable Example
-      </div>
-      <div class="card-body">
+      <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable Example
+        </div>
+        <div class="card-body">
           <table class="table table-bordered", id="datatablesSimple">
             <thead>
               <tr>
@@ -72,8 +54,8 @@
               <% end %>
             </tbody>
           </table>
-        <%= paginate @purchases %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
