@@ -17,5 +17,6 @@ require("chart.js")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import "bootstrap"
-import "chartkick/chart.js"
+import "bootstrap";
+import "chartkick/chart.js";
+import '@fortawesome/fontawesome-free/js/all';

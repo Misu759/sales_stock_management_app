@@ -4,29 +4,41 @@
 			<div class="nav">
 				<div class="sb-sidenav-menu-heading">Top page</div>
 				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to "ダッシュボード", root_path, class: "nav-link" %>
+					<%= link_to root_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
+						ダッシュボード
+					<% end %>
 				</div>
-				<div class="sb-sidenav-menu-heading">各データ</div>
+				<div class="sb-sidenav-menu-heading">Management Data</div>
 				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to t('.sales'), sales_path, class: "nav-link" %>
-				</div>
-				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to t('.purchases'), purchases_path, class: "nav-link" %>
-				</div>
-				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to t('.menus'), menus_path, class: "nav-link" %>
+					<%= link_to sales_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
+						<%= t('.sales') %>
+					<% end %>
 				</div>
 				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to t('.ingredients'), ingredients_path, class: "nav-link" %>
+					<%= link_to purchases_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+						<%= t('.purchases') %>
+					<% end %>
 				</div>
 				<div>
-					<!-- <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> -->
-					<%= link_to "仕入れ先情報", suppliers_path, class: "nav-link" %>
+					<%= link_to menus_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+						<%= t('.menus') %>
+					<% end %>
+				</div>
+				<div>
+					<%= link_to ingredients_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-apple-whole"></i></div>
+						<%= t('.ingredients') %>
+					<% end %>
+				</div>
+				<div>
+					<%= link_to suppliers_path, class: "nav-link" do %>
+						<div class="sb-nav-link-icon"><i class="fa-solid fa-shop"></i></div>
+						仕入れ先情報
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -37,5 +49,5 @@
 				<p>未ログイン</p>
 			<% end %>
 		</div>
-</nav>
+	</nav>
 </div>
