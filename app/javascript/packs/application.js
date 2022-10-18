@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("chartkick")
 require("chart.js")
+require('jquery')
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -20,3 +21,5 @@ require("chart.js")
 import "bootstrap";
 import "chartkick/chart.js";
 import '@fortawesome/fontawesome-free/js/all';
+
+import "./scripts"

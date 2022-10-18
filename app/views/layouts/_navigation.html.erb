@@ -4,15 +4,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fa-regular fa-user"></i>
-    </a>
-  
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <%= link_to 'ユーザー設定（未）', '#', class: "dropdown-item"%>
-      <%= link_to 'ログアウト', logout_path, class: "dropdown-item", method: :delete %>
+  <div class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <div class="nav-item dropdown">
+      <a class="btn nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user fa-fw"></i>
+      </a>
+    
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to 'ユーザー設定（未）', '#', class: "dropdown-item"%>
+        <%= link_to 'ログアウト', logout_path, class: "dropdown-item", method: :delete %>
+      </div>
     </div>
   </div>
+
 </div>
 </nav>
