@@ -19,8 +19,13 @@ module CrosspointApp
       g.skip_routes true
       g.assets false
       g.helper false
-      g.test_framework false
+      g.test_framework :rspec,
+      controller_specs: false,
+      view_specs: false,
+      helper_specs: false,
+      routing_specs: false
     end
+
 
     #自作ヘルパをコントローラのスコープに限定する
     config.action_controller.include_all_helpers = false

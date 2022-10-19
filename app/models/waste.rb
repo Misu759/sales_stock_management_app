@@ -1,4 +1,5 @@
 class Waste < ApplicationRecord
-  belongs_to :ingredient
   validates :amount, :date, presence: true
+
+  belongs_to :ingredient
 end
