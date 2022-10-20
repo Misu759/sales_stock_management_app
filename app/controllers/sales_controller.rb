@@ -28,7 +28,6 @@ class SalesController < ApplicationController
 
         # 発注した順番に食材を使用していく → 廃棄期限迫っている食材を警告するため
         purchase = ingredient.purchases.where("unused_amount > 0").first
-        purchase.unused_amount -= value
         purchase.decorate.update_amount_to_purchase(value)
       end
       redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
