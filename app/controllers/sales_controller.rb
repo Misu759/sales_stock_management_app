@@ -12,6 +12,7 @@ class SalesController < ApplicationController
     # 日付の入力を一つにまとめる
     @form_date = Date.today
     @form = Form::SaleCollection.new
+    @menus = Menu.all
   end
 
   def create
@@ -74,6 +75,7 @@ class SalesController < ApplicationController
   end
 
   def search
+    @date = params[:q][:date_eq]
     @results = @q.result.includes(menu: :ingredients)
     @ingredients = Ingredient.all
     @ingredients_hash = get_amount_of_ingredients(@results)

@@ -8,14 +8,15 @@ ja:
   layouts:
     navigation:
       title: 'CROSSPOINT'
-      sales: '売上'
-      purchases: '発注'
-      menus: 'メニュー'
-      ingredients: '在庫'
       logout: 'ログアウト'
     before_login_navigation:
       title: 'CROSSPOINT'
       login: 'ログイン'
+    sidebar:
+      sales: '売上'
+      purchases: '発注'
+      menus: 'メニュー'
+      ingredients: '在庫'
   home:
     index:
       profit: '目標利益 : '
