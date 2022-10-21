@@ -20,6 +20,7 @@ class IngredientsController < ApplicationController
       flash[:notice] = "食材情報を追加しました"
       redirect_to ingredients_path
     else
+      flash.now[:danger] = "もう一度やり直してください"
       render 'new'
     end
   end

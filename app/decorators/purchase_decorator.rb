@@ -4,7 +4,7 @@ class PurchaseDecorator < ApplicationDecorator
   def update_amount_to_purchase(value)
     if purchase.unused_amount - value >= 0
       purchase.unused_amount -= value
-      purchase.save!
+      purchase.save!      
     else
       diff = value - purchase.unused_amount
       purchase.unused_amount = 0

@@ -14,6 +14,7 @@ ja:
         regular_cost: '定価(円)'
         description: '詳細'
         category: 'カテゴリー'
+        ingredient_number: '食材数'
       sale:
         quantity: '売上個数'
         date: '日付'
@@ -21,8 +22,9 @@ ja:
         name: '食材名'
         purchase_cost: '値段'
         unit_amount: '量（ml/ g/ 枚）'
-        unit_cost: '単価'
+        threshold: 'アラート値'
         stock: '在庫量'
+        supplier: '仕入れ先'
       purchase:
         ingredient_name: '食材名'
         amount: '発注量'
@@ -40,6 +42,10 @@ ja:
         email: 'メール'
         password: 'パスワード'
         password_confirmation: 'パスワード（確認用）'
+      supplier:
+        name: '店舗名'
+        phone_number: '電話番号'
+        delivery_cost: '配送費'
   enums:
     menu:
       category:

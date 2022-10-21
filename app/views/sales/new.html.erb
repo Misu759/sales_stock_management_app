@@ -29,7 +29,7 @@
             </td>
             <td>
               <div class="form-group row col-5">
-                <%= f.number_field :quantity, class: "form-control rounded" %>
+                <%= f.number_field :quantity, class: "form-control rounded", id: "sale-num-form-#{@menus[f.index].id}" %>
               </div>
             </td>
           </tr>

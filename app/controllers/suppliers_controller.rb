@@ -12,8 +12,10 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     if @supplier.save
+      flash[:notice] = '仕入れ先情報の登録成功'
       redirect_to @supplier
     else
+      flash.now[:danger] = 'もう一度やり直してください'
       render new_supplier_path
     end
   end

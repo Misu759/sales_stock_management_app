@@ -31,9 +31,9 @@ RSpec.describe Supplier, type: :model do
         expect(@supplier).to be_invalid
       end
       it 'nameが重複している場合は登録できない' do
-        @supplier.save
-        @supplier_duplicate_name = FactoryBot.build(:supplier_duplicate_name)
-        expect(@supplier_duplicate_name).to be_invalid
+        supplier = FactoryBot.create(:supplier_duplicate_name)
+        supplier_duplicate_name = FactoryBot.build(:supplier_duplicate_name)
+        expect(supplier_duplicate_name).to be_invalid
       end
     end
   end

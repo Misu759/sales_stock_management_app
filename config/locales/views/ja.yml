@@ -84,6 +84,13 @@ ja:
       operating_income: '営業利益'
       per_menu: 'メニュー別売上' 
       not_found: '該当する売上情報がありません'
+    confirm:
+      title: '売上一覧'
+      total_sales: '売上高'
+      cost_of_sales: '原価'
+      operating_income: '営業利益'
+      per_menu: 'メニュー別売上' 
+      not_found: '該当する売上情報がありません'
     show: 
       title: '売上詳細'
       total_sales: '売上高'

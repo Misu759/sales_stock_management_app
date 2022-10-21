@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ingredient, type: :model do
   before do
-    @supplier = FactoryBot.build(:supplier)
-    @supplier.save
     @ingredient = FactoryBot.build(:ingredient)
-    @ingredient.supplier = @supplier
   end
 
   describe '新規登録' do
@@ -33,11 +30,11 @@ RSpec.describe Ingredient, type: :model do
         expect(@ingredient).to be_invalid
       end
       it 'supplierが空の場合は登録できない' do
-        ingredient_not_input_supplier = FactoryBot.build(:ingredient)
+        ingredient_not_input_supplier = FactoryBot.build(:ingredient_not_input_supplier)
         expect(ingredient_not_input_supplier).to be_invalid
       end
       it '存在しないsupplierを入力した場合は登録できない' do
-        ingredient_not_input_supplier = FactoryBot.build(:ingredient)
+        ingredient_not_input_supplier = FactoryBot.build(:ingredient_not_input_supplier)
         ingredient_not_input_supplier.supplier_id = 999
         expect(ingredient_not_input_supplier).to be_invalid
       end
