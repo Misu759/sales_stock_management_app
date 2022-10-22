@@ -65,6 +65,8 @@ ja:
     show:
       title: '発注詳細'
       new_path: '[ 発注情報を追加 ]'
+    search:
+      not_found: '該当する発注情報がありません'
   sales:
     search_form:
       search: '日付を選択してください'

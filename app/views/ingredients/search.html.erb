@@ -3,7 +3,7 @@
 
   <div class="card mb-4">
     <div class="card-body">
-        Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+        食材名を入力して表示するデータを絞り込むことが可能です．
         <div class="mt-4 mb-4">
           <%= render 'search_form' %>
         </div>
@@ -12,8 +12,8 @@
 
   <div class="card mb-4">
     <div class="card-header">
-        <!-- <i class="fas fa-table me-1"></i> -->
-        メニュー一覧
+        <i class="fas fa-table me-1"></i>
+        一覧
     </div>
     <div class="card-body">
       <table class="table table-bordered" id="datatablesSimple">
@@ -26,16 +26,21 @@
         </thead>
         <tbody>
           <% @results.each do |ingredient| %>
-            <tr>
-              <th scope="row"><%= ingredient.name %></th>
-              <!-- TODO(繰り越し在庫量，営業日在庫量の計算) -->
-              <td><%= ingredient.stock %></td>
-              <td>
-                <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
-                <%= link_to t('defaults.edit'), edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-success" %>
-                <%= link_to t('defaults.delete'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-              </td>
-            </tr>
+          <tr>
+            <th scope="row"><%= ingredient.name %></th>
+            <td>
+              <% if ingredient.stock <= ingredient.threshold.to_i %>
+                <p class="text-danger"><%= ingredient.stock %></p>
+              <% else %>
+                <%= ingredient.stock %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to t('defaults.show'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to t('defaults.edit'), edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-success" %>
+              <%= link_to t('defaults.delete'), ingredient_path(ingredient), class: "btn btn-sm btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            </td>
+          </tr>
           <% end %>
         </tbody>
       </table>

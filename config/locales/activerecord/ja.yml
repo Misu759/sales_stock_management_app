@@ -19,7 +19,7 @@ ja:
         quantity: '売上個数'
         date: '日付'
       ingredient:
-        name: '食材名'
+        name: '食材名/商品名'
         purchase_cost: '値段'
         unit_amount: '量（ml/ g/ 枚）'
         threshold: 'アラート値'

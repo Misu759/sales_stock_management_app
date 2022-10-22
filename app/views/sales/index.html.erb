@@ -1,34 +1,32 @@
-<div class="container">
-  <div class="container-fluid px-4">
-    <h1 class="mt-4"><%= t '.title' %></h1>
-  
-    <div class="card mb-4">
-        <div class="card-body">
-            Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-            <div class="text-center">
-              <%= link_to t('.new_path'), new_sale_path, class: "btn btn-lg btn-outline-secondary" %>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid px-4">
+  <h1 class="mt-4"><%= t '.title' %></h1>
 
-    <div class="card mb-4">
+  <div class="card mb-4">
       <div class="card-body">
-          Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-          <div class="mt-4 mb-4">
-            <%= render 'search_form' %>
+          日付を選択し，各メニューの売上個数を入力することで売上情報を登録することができます．
+          登録した売上の情報から，使用されるはずの食材のデータを計算し，在庫のデータを更新します．
+          <div class="text-center mt-4">
+            <%= link_to t('.new_path'), new_sale_path, class: "btn btn-lg btn-outline-secondary" %>
           </div>
       </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+        日付を選択すると，その日付の売上データ一覧ページに移動します．
+          <%= render 'search_form' %>
     </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-chart-area me-1"></i>
-            売上一覧
-        </div>
-        <div class="mt-4">
-          <%= line_chart @sales_graph_data, xtitle: "日付", ytitle: "売上高" %>
-        </div>
-        <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-        <div class="card-footer small text-muted">最終更新日： hoge </div>
-    </div>
+  </div>
+
+  <div class="card mb-4">
+      <div class="card-header">
+          <i class="fas fa-chart-area me-1"></i>
+          売上一覧
+      </div>
+      <div class="mt-4">
+        <%= line_chart @sales_graph_data, xtitle: "日付", ytitle: "売上高" %>
+      </div>
+      <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+      <div class="card-footer small text-muted">最終更新日： hoge </div>
   </div>
 </div>

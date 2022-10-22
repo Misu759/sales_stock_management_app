@@ -1,6 +1,5 @@
 <div class="container">
   <div class="container-fluid px-4">
-    <!-- TODO 検索結果がnilの場合にも対応できるように -->
     <h1 class="mt-4 mb-4"><%= l @date.to_date, format: :long %>  <%= t '.title' %></h1>
     <% if !@results.exists? %>
       <p class="mt-4"><%= t '.not_found' %></p>

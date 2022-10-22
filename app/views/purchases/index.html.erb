@@ -4,8 +4,9 @@
 
     <div class="card mb-4">
       <div class="card-body">
-          Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-          <div class="text-center">
+          発注した食材の情報を登録することができます．各食材の発注量を登録することで発注日を計算します．<br>
+          また，到着予定日を登録することで，当日に確認画面に表示させることができます．
+          <div class="text-center mt-4">
             <%= link_to "発注情報追加", new_purchase_path, class: "btn btn-lg btn-outline-secondary" %>
           </div>
       </div>
@@ -13,7 +14,7 @@
 
     <div class="card mb-4">
       <div class="card-body">
-          Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+          選択した食材ごとの発注データ一覧ページに移動します．
           <div class="mt-4 mb-4">
             <%= render 'search_form' %>
           </div>
@@ -37,7 +38,7 @@
     <div class="card mb-4">
       <div class="card-header">
           <i class="fas fa-table me-1"></i>
-          DataTable Example
+          発注データ
       </div>
       <div class="card-body">
           <table class="table table-bordered", id="datatablesSimple">

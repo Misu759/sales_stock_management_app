@@ -2,7 +2,7 @@
   <div class="row">
     <%= f.label :ingredient_name_cont, "食材名", class: 'col-form-label'%>
     <div class="col">
-      <%= f.select :ingredient_id_eq, options_from_collection_for_select(Ingredient.all, :id, :name , 1), {}, class:'form-control' %>
+      <%= f.select :ingredient_id_eq, options_from_collection_for_select(Ingredient.all, :id, :name ), { prompt: t('defaults.prompt') }, class:'form-control' %>
     </div>
     <div class="col">
       <%= f.submit class: 'btn btn-outline-secondary' %>

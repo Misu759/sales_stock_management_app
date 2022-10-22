@@ -3,7 +3,7 @@
 
   <% if !@alert_ingredient_name_list.empty? %>
     <div class="alert alert-danger">
-      <h4 class="alert-heading">発注が必要です</h4>
+      <h4 class="alert-heading">発注が必要な食材/商品があります</h4>
       <% @alert_ingredient_name_list.each do |ingredient_name| %>
         <p><%= ingredient_name %>の在庫量を確認してください</p>
       <% end %>
@@ -16,9 +16,9 @@
     <div class="col-xl-6">
       <div class="card mb-4">
         <div class="card-body">
-            Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-            <div class="text-center">
-              <%= link_to "食材情報の登録", new_ingredient_path, class: "btn btn-lg btn-outline-secondary" %>
+            食材の情報を登録することができます．各食材は購入単位とその価格を入力します．アラート値を入力することで，在庫量がその値を下回った際に警告メッセージを表示することができます．
+            <div class="text-center mt-4">
+              <%= link_to "食材情報の新規登録", new_ingredient_path, class: "btn btn-lg btn-outline-secondary" %>
             </div>
         </div>
       </div>
@@ -26,8 +26,8 @@
     <div class="col-xl-6">
       <div class="card mb-4">
         <div class="card-body">
-            Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-            <div class="text-center">
+            廃棄した食材の情報を登録することができます．登録した情報は，在庫量に反映されます．
+            <div class="text-center mt-4">
               <%= link_to t('.waste_path'), wastes_path, class: "btn btn-lg btn-outline-secondary" %>
             </div>
         </div>
@@ -37,7 +37,7 @@
 
   <div class="card mb-4">
     <div class="card-body">
-        Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+        食材名を入力して表示するデータを絞り込むことが可能です．
         <div class="mt-4 mb-4">
           <%= render 'search_form' %>
         </div>
