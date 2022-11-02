@@ -16,6 +16,8 @@ class SalesController < ApplicationController
   end
 
   def create
+    @form_date = Date.today
+    @menus = Menu.all
     @form = Form::SaleCollection.new(sale_collection_params)
 
     if @form.save
@@ -28,15 +30,16 @@ class SalesController < ApplicationController
         ingredient.save!
 
         # 発注した順番に食材を使用していく → 廃棄期限迫っている食材を警告するため
+        # 発注情報が登録されており，未使用量がある食材の場合のみ登録
         purchase = ingredient.purchases.where("unused_amount > 0").first
-        p value
-        purchase.decorate.update_amount_to_purchase(value)
+        if purchase
+          purchase.decorate.update_amount_to_purchase(value)
+          redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
+        end
       end
-      redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
-    else
-      flash.now[:alert] = "登録に失敗しました"
-      render new_sale_path
     end
+    flash.now[:alert] = "登録に失敗しました"
+    render new_sale_path
   end
 
   def show; end
