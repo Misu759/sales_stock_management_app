@@ -7,10 +7,10 @@ ja:
     prompt: '選択してください'
   layouts:
     navigation:
-      title: 'CROSSPOINT'
+      title: 'DEMO APP'
       logout: 'ログアウト'
     before_login_navigation:
-      title: 'CROSSPOINT'
+      title: 'DEMO APP'
       login: 'ログイン'
     sidebar:
       sales: '売上'

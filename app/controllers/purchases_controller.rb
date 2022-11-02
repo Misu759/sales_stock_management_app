@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :set_q, only: %i[index search]
 
   def index
-    @purchases = Purchase.all.includes(:ingredient).page(params[:page])
+    @purchases = Purchase.all.order(created_at: :desc).includes(:ingredient).page(params[:page])
     @purchase_graph_data = purchase_cost_per_date
   end
 
@@ -78,7 +78,7 @@ class PurchasesController < ApplicationController
     cost_per_date_columns = @purchases.joins(:ingredient).select(:purchase_date, "SUM(amount * purchase_cost) AS total").group(:purchase_date)
     graph_data = []
     cost_per_date_columns.each do |cost_per_date_column|
-      graph_data.append([cost_per_date_column.purchase_date, cost_per_date_column.total])
+      graph_data << [cost_per_date_column.purchase_date, cost_per_date_column.total]
     end
     graph_data
   end
