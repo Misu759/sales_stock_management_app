@@ -12,7 +12,7 @@ class MenuIngredientsController < ApplicationController
     @form = Form::MenuIngredientCollection.new(params[:number], menu_ingredient_collection_params)
 
     if @form.save
-      flash[:notice] = "#{@menu}の材料情報を登録しました"
+      flash[:notice] = "#{@menu.name}の材料情報を登録しました"
       redirect_to @menu
     else
       flash.now[:danger] = '材料情報の登録に失敗しました'

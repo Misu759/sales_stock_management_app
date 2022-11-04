@@ -32,6 +32,7 @@
         <div class="col-3">
           <%= f.number_field :threshold, class: "form-control rounded" %>
         </div>
+        （入力した値を下回った場合に，警告します．）
       </div>
 
       <div class="form-group row">
@@ -42,7 +43,7 @@
       </div>
 
       <div class="form-group row justify-content-center">
-        <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        <%= f.submit class: "btn btn-outline-dark btn-lg" %>
       </div>
       <% end %>
       <div class="mb-3 text-center">

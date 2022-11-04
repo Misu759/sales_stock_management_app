@@ -14,4 +14,8 @@ class PurchaseDecorator < ApplicationDecorator
       next_purchase.decorate.update_amount_to_purchase(diff)
     end
   end
+
+  def purchase_cost
+    (ingredient.purchase_cost * amount).to_i
+  end
 end

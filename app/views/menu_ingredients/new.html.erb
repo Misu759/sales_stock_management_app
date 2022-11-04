@@ -20,7 +20,7 @@
               <td>
                 <div class="form-group row">
                   <div class="col-10">
-                    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, class: "form-control rounded" %>
+                    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: t('defaults.prompt') }, class: "form-control rounded" %>
                   </div>
                 </div>
               </td>
@@ -38,7 +38,7 @@
         </table>
 
         <div class="form-group row justify-content-center">
-          <%= form.submit class: "btn btn-outline-light btn-lg", data: {confirm: "登録します"} %>
+          <%= form.submit class: "btn btn-outline-dark btn-lg", data: {confirm: "登録します"} %>
         </div>
       <% end %>
 

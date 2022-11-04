@@ -1,7 +1,7 @@
-<h1 class="mt-4 mb-4"><%= t '.title' %></h1>
 
-
-<h2 class="text-center mt-4"><%= @purchase.ingredient.name %></h2>
+<h2 class="text-center mt-4">
+  <%= t '.title' %> : <%= @purchase.ingredient.name %>
+</h2>
 
 <div class="container">
   <div class="row justify-content-md-center">
@@ -13,10 +13,10 @@
         <div class="card-body">
           <div class="card-text text-center">
             <p><%= "#{Purchase.human_attribute_name :amount} : #{@purchase.amount}" %></p>
-            <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@purchase.ingredient.decorate.unit_cost * @purchase.amount}円" %></p>
+            <p><%= "#{Ingredient.human_attribute_name :purchase_cost} : #{@purchase.decorate.purchase_cost}円" %></p>
             <p><%= "#{Purchase.human_attribute_name :waste_date} : #{@purchase.waste_date}" %></p>
-            <p><%= "未使用量 : #{@purchase.unused_amount}" %></p>
-            <p><%= "到着予定日 : #{@purchase.arrival_date}" %></p>
+            <p><%= "#{Purchase.human_attribute_name :unused_amount} : #{@purchase.unused_amount}" %></p>
+            <p><%= "#{Purchase.human_attribute_name :arrival_date} : #{l @purchase.arrival_date, format: :short}" %></p>
 
             <p>担当者 :</p>
           </div>
