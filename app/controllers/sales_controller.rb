@@ -20,6 +20,7 @@ class SalesController < ApplicationController
     @menus = Menu.all
     @form = Form::SaleCollection.new(sale_collection_params)
 
+    is_success = false
     if @form.save
       # 在庫量を変化させる処理
       ingredients_hash = get_amount_of_ingredients(@form.sales)
@@ -34,12 +35,17 @@ class SalesController < ApplicationController
         purchase = ingredient.purchases.where("unused_amount > 0").first
         if purchase
           purchase.decorate.update_amount_to_purchase(value)
-          redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
+          is_success = true
         end
       end
     end
-    flash.now[:alert] = "登録に失敗しました"
-    render new_sale_path
+
+    if is_success
+      redirect_to confirm_sales_path(date: params[:form_sale_collection][:form_date]), notice: "売上を登録しました"
+    else
+      flash.now[:alert] = "登録に失敗しました"
+      render new_sale_path
+    end
   end
 
   def show; end
