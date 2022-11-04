@@ -3,7 +3,9 @@ class Menu < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }, uniqueness: { case_sensitive: false }
   validates :category, presence: true
   
-  has_many :sales
+  # メニューを削除した場合も過去の売上のデータは残るように
+  # (一旦エラーが出ないように dependent: :destroy つける)
+  has_many :sales, dependent: :destroy
   has_many :menu_ingredients, dependent: :destroy
   has_many :ingredients, through: :menu_ingredients
 
