@@ -47,11 +47,11 @@ class PurchasesController < ApplicationController
     purchase = Purchase.find(params[:purchase_id])
     if purchase.arrival_check
       purchase.update(arrival_check: false)
-      purchase.ingredient.stock -= purchase.amount
+      purchase.ingredient.stock -= purchase.amount * purchase.ingredient.unit_amount
       purchase.ingredient.save!
     else
       purchase.update(arrival_check: true)
-      purchase.ingredient.stock += purchase.amount
+      purchase.ingredient.stock += purchase.amount * purchase.ingredient.unit_amount
       purchase.ingredient.save!
     end
     redirect_back(fallback_location: root_path)
