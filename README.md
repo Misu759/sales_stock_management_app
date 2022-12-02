@@ -86,3 +86,6 @@
 README〜ER図作成：12/4 〆切
 
 本番リリース：1月末
+
+### 画面遷移図
+Figma: https://www.figma.com/file/hUPgxaFGlfHVTq0Bd7HWSa/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0%3A1&t=2U1PufO8Pdih7DrT-0
